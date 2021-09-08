@@ -232,8 +232,8 @@ class res_company(models.Model):
         res = "BSC connected: {}\n".format( web3.isConnected() )
         res += 'candidatesCount={}\n'.format( contract.functions.candidatesCount().call())
         res += 'candidates(1)={}\n'.format(contract.functions.candidates(1).call())
-        res += 'nonce={}\n'.format( web3.eth.getTransactionCount(self.my_account))
-        res += 'gasPrice={}\n'.format(web3.eth.gasPrice)
+        res += 'nonce={}\n'.format( web3.eth.get_transaction_count(self.my_account))
+        res += 'gasPrice={}\n'.format(web3.eth.gas_price)
         _logger.info('bsc_test_connection: %s', res)
         return {
             'status': 0,
@@ -303,7 +303,7 @@ class res_company(models.Model):
         transaction.buildTransaction({
             'chainId': CHAIN_ID,
             'gas': 1000000,
-            'gas_price': web3.eth.gasPrice,
+            'gas_price': web3.eth.gas_price,
             'nonce': web3.eth.get_transaction_count(my_account)
         })
 
