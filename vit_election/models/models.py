@@ -245,7 +245,7 @@ class res_company(models.Model):
                 'nonce': web3.eth.getTransactionCount(my_account)
             })
 
-            signed_txn = web3.eth.account.signTransaction(transaction, private_key)
+            signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             _logger.info('add_candidate tx_receipt=%s', tx_receipt)
@@ -263,7 +263,7 @@ class res_company(models.Model):
                     'nonce': web3.eth.getTransactionCount(my_account)
                     })
 
-            signed_txn = web3.eth.account.signTransaction(transaction, private_key)
+            signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             _logger.info('tx_receipt=%s', tx_receipt)

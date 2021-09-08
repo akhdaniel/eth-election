@@ -16,6 +16,6 @@ uid = common.authenticate(db, username, password, {})
 models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 
 res = models.execute_kw(db, uid, password,
-    'res.company', 'bsc_add_candidate', [False, 'Candidate 1', '1']
+    'res.company', 'bsc_add_candidate', [False, 'Candidate 1', 1]
     )
 print(res)
