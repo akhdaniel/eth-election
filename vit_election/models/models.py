@@ -228,27 +228,37 @@ class res_company(models.Model):
     _name = 'res.company'
     _inherit = 'res.company'
 
-    def init(self):
-        _logger.info("BSC connected: %s", web3.isConnected() )
-        _logger.info('candidatesCounte=1',contract.functions.candidatesCount().call())
-        _logger.info('candidates(1)=',contract.functions.candidates(1).call())
-        _logger.info('nonce=', web3.eth.getTransactionCount(self.my_account))
-        _logger.info('gasPrice=',web3.eth.gasPrice)
+    def bsc_test_connection(self):
+        res = "BSC connected: {}\n".format( web3.isConnected() )
+        res += 'candidatesCount={}\n'.format( contract.functions.candidatesCount().call())
+        res += 'candidates(1)={}\n'.format(contract.functions.candidates(1).call())
+        res += 'nonce={}\n'.format( web3.eth.getTransactionCount(self.my_account))
+        res += 'gasPrice={}\n'.format(web3.eth.gasPrice)
+        _logger.info('bsc_test_connection: %s', res)
+        return {
+            'status': 0,
+            'message': res
+        }
 
     def bsc_add_candidate(self, candidate_name, voting_session_id):
         try:
+            transaction = contract.functions.addCandidate(candidate_name, voting_session_id)
+            tx_receipt = self.build_transaction(transaction)
+            return {
+                'status': 0,
+                'rx_receipt': str(tx_receipt)
+            }
             
-            transaction = contract.functions.addCandidate(candidate_name, voting_session_id).buildTransaction({
-                'chainId': CHAIN_ID,
-                'gas': 1000000,
-                'gasPrice': web3.eth.gasPrice,
-                'nonce': web3.eth.getTransactionCount(my_account)
-            })
+        except Exception as e:
+            return {
+                'status': -1,
+                'message': e
+            }
 
-            signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
-            tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
-            tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
-            _logger.info('add_candidate tx_receipt=%s', str(tx_receipt))
+    def bsc_add_voter(self, voter_name, voter_address):
+        try:
+            transaction = contract.functions.addVoter(voter_name, voter_address)
+            tx_receipt = self.build_transaction(transaction)
             return {
                 'status': 0,
                 'rx_receipt': str(tx_receipt)
@@ -262,18 +272,8 @@ class res_company(models.Model):
 
     def bsc_vote(self, candidate_id, voter_address, voting_session_id):
         try:
-
-            transaction = contract.functions.vote(candidate_id, voter_address, voting_session_id).buildTransaction({
-                    'chainId': CHAIN_ID,
-                    'gas': 1000000,
-                    'gasPrice': web3.eth.gasPrice,
-                    'nonce': web3.eth.getTransactionCount(my_account)
-                    })
-
-            signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
-            tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
-            tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
-            _logger.info('tx_receipt=%s', tx_receipt)
+            transaction = contract.functions.vote(candidate_id, voter_address, voting_session_id)
+            tx_receipt = self.build_transaction(transaction)
             return {
                 'status': 0,
                 'rx_receipt': str(tx_receipt)
@@ -284,10 +284,30 @@ class res_company(models.Model):
                 'status': -1,
                 'message': e
             }
+
+
+    def bsc_create_account(self, name):
+        try:
+            account = web3.eth.account.create(name)
+            _logger.info('account=%s', account)
+            return account
+        except Exception as e:
+            return {
+                'status': -1,
+                'message': e
+            }
+
+    def build_transaction(self, transaction):
+        transaction.buildTransaction({
+            'chainId': CHAIN_ID,
+            'gas': 1000000,
+            'gasPrice': web3.eth.gasPrice,
+            'nonce': web3.eth.getTransactionCount(my_account)
+        })
+
+        signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
+        tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
+        tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
+        _logger.info('tx_receipt=%s', str(tx_receipt))
+        return tx_receipt
             
-
-
-    def create_account(self, name):
-        account = web3.eth.account.create(name)
-        return account
-
