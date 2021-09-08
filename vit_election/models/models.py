@@ -233,9 +233,10 @@ class res_company(models.Model):
         self.my_private_key = PRIVATE_KEY_1
 
         _logger.info("BSC connected: %s", self.web3.isConnected() )
+        self.bsc_get_contract()
         return self.web3.isConnected()
 
-    def get_contract(self):
+    def bsc_get_contract(self):
         contract_address = self.web3.toChecksumAddress(CONTRACT_ADDRESS)
         self.contract = self.web3.eth.contract(address=contract_address, abi=ABI)        
         _logger.info('candidatesCounte=1',self.contract.functions.candidatesCount().call())
@@ -247,7 +248,6 @@ class res_company(models.Model):
         try:
             if not self.bsc_connect():
                 raise UserError('Failed to connect to BSC')
-            self.get_contract()
             
             transaction = self.contract.functions.addCandidate(candidate_name, voting_session_id).buildTransaction({
                 'chainId': CHAIN_ID,
@@ -268,7 +268,6 @@ class res_company(models.Model):
         try:
             if not self.bsc_connect():
                 raise UserError('Failed to connect to BSC')
-            self.get_contract()
 
             transaction = self.contract.functions.vote(candidate_id, voter_address, voting_session_id).buildTransaction({
                     'chainId': CHAIN_ID,
