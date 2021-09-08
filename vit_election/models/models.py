@@ -222,7 +222,7 @@ web3 = Web3(Web3.HTTPProvider(BSC))
 contract_address = web3.toChecksumAddress(CONTRACT_ADDRESS)
 contract = web3.eth.contract(address=contract_address, abi=ABI)   
 my_account = web3.toChecksumAddress(ACCOUNT_ADDRESS_1)
-my_private_key = PRIVATE_KEY_1
+my_my_private_key = PRIVATE_KEY_1
 
 class res_company(models.Model):
     _name = 'res.company'
@@ -249,7 +249,7 @@ class res_company(models.Model):
                     'nonce': web3.eth.getTransactionCount(my_account)
                     })
 
-            signed_txn = web3.eth.account.signTransaction(transaction, private_key)
+            signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
 
@@ -276,13 +276,13 @@ class res_company(models.Model):
                     'nonce': web3.eth.getTransactionCount(my_account)
                     })
 
-            signed_txn = web3.eth.account.signTransaction(transaction, private_key)
+            signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             return {
                 'status': 0,
                 'address': account.address,
-                'private_key': account.privateKey,
+                'my_private_key': account.privateKey,
                 'rx_receipt': str(tx_receipt)
             }
             
@@ -301,7 +301,7 @@ class res_company(models.Model):
                     'nonce': web3.eth.getTransactionCount(my_account)
                     })
 
-            signed_txn = web3.eth.account.signTransaction(transaction, private_key)
+            signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             return {
