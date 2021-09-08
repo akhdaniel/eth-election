@@ -222,10 +222,10 @@ class res_company(models.Model):
     _name = 'res.company'
     _inherit = 'res.company'
 
-    web3 = None
-    contract = None
-    my_account = None
-    my_private_key = None
+    # web3 = None
+    # contract = None
+    # my_account = None
+    # my_private_key = None
 
     def bsc_connect(self):
         self.web3 = Web3(Web3.HTTPProvider(BSC))
