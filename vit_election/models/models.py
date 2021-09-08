@@ -229,7 +229,7 @@ class res_company(models.Model):
 
     def bsc_connect(self):
         self.web3 = Web3(Web3.HTTPProvider(BSC))
-        self.my_account = web3.toChecksumAddress(ACCOUNT_ADDRESS_1)
+        self.my_account = self.web3.toChecksumAddress(ACCOUNT_ADDRESS_1)
         self.my_private_key = PRIVATE_KEY_1
 
         _logger.info("BSC connected: %s", self.web3.isConnected() )
