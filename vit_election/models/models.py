@@ -222,7 +222,7 @@ web3 = Web3(Web3.HTTPProvider(BSC))
 contract_address = web3.toChecksumAddress(CONTRACT_ADDRESS)
 contract = web3.eth.contract(address=contract_address, abi=ABI)   
 my_account = web3.toChecksumAddress(ACCOUNT_ADDRESS_1)
-my_my_private_key = PRIVATE_KEY_1
+my_private_key = PRIVATE_KEY_1
 
 class res_company(models.Model):
     _name = 'res.company'
