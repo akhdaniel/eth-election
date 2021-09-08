@@ -252,7 +252,7 @@ class res_company(models.Model):
         except Exception as e:
             return {
                 'status': -1,
-                'message': e
+                'message': str(e)
             }
 
     def bsc_add_voter(self, voter_name):
@@ -271,7 +271,7 @@ class res_company(models.Model):
         except Exception as e:
             return {
                 'status': -1,
-                'message': e
+                'message': str(e)
             }
 
     def bsc_vote(self, candidate_id, voter_address, voting_session_id):
@@ -286,7 +286,7 @@ class res_company(models.Model):
         except Exception as e:
             return {
                 'status': -1,
-                'message': e
+                'message': str(e)
             }
 
     def bsc_create_account(self, name):
