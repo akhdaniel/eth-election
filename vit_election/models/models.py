@@ -243,17 +243,33 @@ class res_company(models.Model):
         _logger.info('nonce=', self.web3.eth.getTransactionCount(self.my_account))
         _logger.info('gasPrice=',self.web3.eth.gasPrice)
 
-    def bsc_add_candidate(self, name, voting_session_id):
+    def bsc_add_candidate(self, candidate_name, voting_session_id):
         try:
             if not self.bsc_connect():
                 raise UserError('Failed to connect to BSC')
             self.get_contract()
             
+            transaction = self.contract.functions.addCandidate(candidate_name, voting_session_id).buildTransaction({
+                'chainId': CHAIN_ID,
+                'gas': 1000000,
+                'gasPrice': self.web3.eth.gasPrice,
+                'nonce': self.web3.eth.getTransactionCount(my_account)
+            })
+
+            signed_txn = self.web3.eth.account.signTransaction(transaction, self.private_key)
+            tx_hash = self.web3.eth.sendRawTransaction(signed_txn.rawTransaction)
+            tx_receipt = self.web3.eth.waitForTransactionReceipt(tx_hash)
+            _logger.info('add_candidate tx_receipt=%s', tx_receipt)
+            
         except Exception as e:
             raise UserError(e)
 
-    def vote(self, candidate_id, voter_address, voting_session_id):
+    def bsc_vote(self, candidate_id, voter_address, voting_session_id):
         try:
+            if not self.bsc_connect():
+                raise UserError('Failed to connect to BSC')
+            self.get_contract()
+
             transaction = self.contract.functions.vote(candidate_id, voter_address, voting_session_id).buildTransaction({
                     'chainId': CHAIN_ID,
                     'gas': 1000000,
