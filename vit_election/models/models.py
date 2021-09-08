@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from web3 import Web3
 from odoo import models, fields, api
-from odoo.exception import UserError
+from odoo.exceptions import UserError, ValidationError
 import logging
 _logger = logging.getLogger(__name__)
 
