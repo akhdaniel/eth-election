@@ -21,8 +21,8 @@ res = models.execute_kw(db, uid, password,
     )
 print(res)
 
-# add new voter, auto created account
-res = models.execute_kw(db, uid, password,
-    'res.company', 'bsc_add_voter', [False, 'Voter 1']
-    )
-print(res)
+# # add new voter, auto created account
+# res = models.execute_kw(db, uid, password,
+#     'res.company', 'bsc_add_voter', [False, 'Voter 1']
+#     )
+# print(res)

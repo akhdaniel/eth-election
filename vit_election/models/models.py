@@ -242,8 +242,8 @@ class res_company(models.Model):
 
     def bsc_add_candidate(self, candidate_name, voting_session_id):
         try:
-            transaction = contract.functions.addCandidate(candidate_name, voting_session_id)
-            tx_receipt = self.build_transaction(transaction)
+            tx_hash = contract.functions.addCandidate(candidate_name, voting_session_id).transact()
+            tx_receipt = self.build_transaction(tx_hash)
             return {
                 'status': 0,
                 'rx_receipt': str(tx_receipt)
