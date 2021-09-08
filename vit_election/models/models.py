@@ -317,7 +317,7 @@ class res_company(models.Model):
 
     def bsc_create_account(self, name):
         try:
-            myAccount = web3.eth.account.create(name)
+            account = web3.eth.account.create(name)
             return account
         except Exception as e:
             return {
