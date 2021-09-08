@@ -222,23 +222,14 @@ class res_company(models.Model):
     _name = 'res.company'
     _inherit = 'res.company'
 
-    # web3 = None
-    # contract = None
-    # my_account = None
-    # my_private_key = None
-
-    def bsc_connect(self):
+    def __init__(self):
         self.web3 = Web3(Web3.HTTPProvider(BSC))
+        contract_address = self.web3.toChecksumAddress(CONTRACT_ADDRESS)
+        self.contract = self.web3.eth.contract(address=contract_address, abi=ABI)   
         self.my_account = self.web3.toChecksumAddress(ACCOUNT_ADDRESS_1)
         self.my_private_key = PRIVATE_KEY_1
-
         _logger.info("BSC connected: %s", self.web3.isConnected() )
-        self.bsc_get_contract()
-        return self.web3.isConnected()
 
-    def bsc_get_contract(self):
-        contract_address = self.web3.toChecksumAddress(CONTRACT_ADDRESS)
-        self.contract = self.web3.eth.contract(address=contract_address, abi=ABI)        
         _logger.info('candidatesCounte=1',self.contract.functions.candidatesCount().call())
         _logger.info('candidates(1)=',self.contract.functions.candidates(1).call())
         _logger.info('nonce=', self.web3.eth.getTransactionCount(self.my_account))
@@ -246,8 +237,6 @@ class res_company(models.Model):
 
     def bsc_add_candidate(self, candidate_name, voting_session_id):
         try:
-            if not self.bsc_connect():
-                raise UserError('Failed to connect to BSC')
             
             transaction = self.contract.functions.addCandidate(candidate_name, voting_session_id).buildTransaction({
                 'chainId': CHAIN_ID,
@@ -266,8 +255,6 @@ class res_company(models.Model):
 
     def bsc_vote(self, candidate_id, voter_address, voting_session_id):
         try:
-            if not self.bsc_connect():
-                raise UserError('Failed to connect to BSC')
 
             transaction = self.contract.functions.vote(candidate_id, voter_address, voting_session_id).buildTransaction({
                     'chainId': CHAIN_ID,
