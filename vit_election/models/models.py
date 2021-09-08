@@ -248,10 +248,10 @@ class res_company(models.Model):
             signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
-            _logger.info('add_candidate tx_receipt=%s', tx_receipt)
+            _logger.info('add_candidate tx_receipt=%s', str(tx_receipt))
             return {
                 'status': 0,
-                'rx_receipt': tx_receipt
+                'rx_receipt': str(tx_receipt)
             }
             
         except Exception as e:
@@ -276,7 +276,7 @@ class res_company(models.Model):
             _logger.info('tx_receipt=%s', tx_receipt)
             return {
                 'status': 0,
-                'rx_receipt': tx_receipt
+                'rx_receipt': str(tx_receipt)
             }
 
         except Exception as e:
