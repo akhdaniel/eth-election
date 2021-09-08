@@ -281,8 +281,8 @@ class res_company(models.Model):
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             return {
                 'status': 0,
-                'address': account.address,
-                'my_private_key': account.privateKey,
+                'address': str(account.address),
+                'private_key': str(account.privateKey),
                 'rx_receipt': str(tx_receipt)
             }
             
