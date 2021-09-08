@@ -303,11 +303,11 @@ class res_company(models.Model):
         transaction.buildTransaction({
             'chainId': CHAIN_ID,
             'gas': 1000000,
-            'gasPrice': web3.eth.gasPrice,
-            'nonce': web3.eth.getTransactionCount(my_account)
+            'gas_price': web3.eth.gasPrice,
+            'nonce': web3.eth.get_transaction_count(my_account)
         })
 
-        signed_txn = web3.eth.account.signTransaction(transaction, my_private_key)
+        signed_txn = web3.eth.account.sign_transaction(transaction, my_private_key)
         tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
         tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
         _logger.info('tx_receipt=%s', str(tx_receipt))
