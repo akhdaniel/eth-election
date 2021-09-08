@@ -255,12 +255,16 @@ class res_company(models.Model):
                 'message': e
             }
 
-    def bsc_add_voter(self, voter_name, voter_address):
+    def bsc_add_voter(self, voter_name):
         try:
+            account = self.bsc_create_account(voter_name)
+            voter_address = account.address
             transaction = contract.functions.addVoter(voter_name, voter_address)
             tx_receipt = self.build_transaction(transaction)
             return {
                 'status': 0,
+                'address': account.address,
+                'private_key': account.privateKey,
                 'rx_receipt': str(tx_receipt)
             }
             
@@ -285,11 +289,9 @@ class res_company(models.Model):
                 'message': e
             }
 
-
     def bsc_create_account(self, name):
         try:
-            account = web3.eth.account.create(name)
-            _logger.info('account=%s', account)
+            myAccount = web3.eth.account.create(name)
             return account
         except Exception as e:
             return {
