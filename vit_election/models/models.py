@@ -242,8 +242,17 @@ class res_company(models.Model):
 
     def bsc_add_candidate(self, candidate_name, voting_session_id):
         try:
-            tx_hash = contract.functions.addCandidate(candidate_name, voting_session_id).transact()
-            tx_receipt = self.build_transaction(tx_hash)
+            transaction = contract.functions.addCandidate(candidate_name, voting_session_id).buildTransaction({
+                    'chainId': CHAIN_ID,
+                    'gas': 1000000,
+                    'gasPrice': web3.eth.gasPrice,
+                    'nonce': web3.eth.getTransactionCount(my_account)
+                    })
+
+            signed_txn = web3.eth.account.signTransaction(transaction, private_key)
+            tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
+            tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
+
             return {
                 'status': 0,
                 'rx_receipt': str(tx_receipt)
@@ -259,8 +268,17 @@ class res_company(models.Model):
         try:
             account = self.bsc_create_account(voter_name)
             voter_address = account.address
-            transaction = contract.functions.addVoter(voter_name, voter_address)
-            tx_receipt = self.build_transaction(transaction)
+
+            transaction = contract.functions.addVoter(voter_name, voter_address).buildTransaction({
+                    'chainId': CHAIN_ID,
+                    'gas': 1000000,
+                    'gasPrice': web3.eth.gasPrice,
+                    'nonce': web3.eth.getTransactionCount(my_account)
+                    })
+
+            signed_txn = web3.eth.account.signTransaction(transaction, private_key)
+            tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
+            tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             return {
                 'status': 0,
                 'address': account.address,
@@ -276,8 +294,16 @@ class res_company(models.Model):
 
     def bsc_vote(self, candidate_id, voter_address, voting_session_id):
         try:
-            transaction = contract.functions.vote(candidate_id, voter_address, voting_session_id)
-            tx_receipt = self.build_transaction(transaction)
+            transaction = contract.functions.vote(candidate_id, voter_address, voting_session_id).buildTransaction({
+                    'chainId': CHAIN_ID,
+                    'gas': 1000000,
+                    'gasPrice': web3.eth.gasPrice,
+                    'nonce': web3.eth.getTransactionCount(my_account)
+                    })
+
+            signed_txn = web3.eth.account.signTransaction(transaction, private_key)
+            tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
+            tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             return {
                 'status': 0,
                 'rx_receipt': str(tx_receipt)
@@ -299,17 +325,3 @@ class res_company(models.Model):
                 'message': e
             }
 
-    def build_transaction(self, transaction):
-        transaction.buildTransaction({
-            'chainId': CHAIN_ID,
-            'gas': 1000000,
-            'gas_price': web3.eth.gas_price,
-            'nonce': web3.eth.get_transaction_count(my_account)
-        })
-
-        signed_txn = web3.eth.account.sign_transaction(transaction, my_private_key)
-        tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
-        tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
-        _logger.info('tx_receipt=%s', str(tx_receipt))
-        return tx_receipt
-            
