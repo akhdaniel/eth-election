@@ -6,210 +6,210 @@ import logging
 _logger = logging.getLogger(__name__)
 
 ABI="""[
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "voteRecords",
-		"outputs": [
-			{
-				"name": "addr",
-				"type": "address"
-			},
-			{
-				"name": "votingSessionId",
-				"type": "uint256"
-			},
-			{
-				"name": "candidateId",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "candidatesCount",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "candidates",
-		"outputs": [
-			{
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"name": "votingSessionId",
-				"type": "uint256"
-			},
-			{
-				"name": "voteCount",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "voterCount",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_candidateId",
-				"type": "uint256"
-			},
-			{
-				"name": "_addr",
-				"type": "address"
-			},
-			{
-				"name": "_votingSessionId",
-				"type": "uint256"
-			}
-		],
-		"name": "vote",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_name",
-				"type": "string"
-			},
-			{
-				"name": "_addr",
-				"type": "address"
-			}
-		],
-		"name": "addVoter",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "voters",
-		"outputs": [
-			{
-				"name": "name",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_addr",
-				"type": "address"
-			},
-			{
-				"name": "_votingSessionId",
-				"type": "uint256"
-			}
-		],
-		"name": "alreadyVote",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_name",
-				"type": "string"
-			},
-			{
-				"name": "_votingSessionId",
-				"type": "uint256"
-			}
-		],
-		"name": "addCandidate",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "_candidateId",
-				"type": "uint256"
-			}
-		],
-		"name": "votedEvent",
-		"type": "event"
-	}
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "voteRecords",
+        "outputs": [
+            {
+                "name": "addr",
+                "type": "address"
+            },
+            {
+                "name": "votingSessionId",
+                "type": "uint256"
+            },
+            {
+                "name": "candidateId",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "candidatesCount",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "candidates",
+        "outputs": [
+            {
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "votingSessionId",
+                "type": "uint256"
+            },
+            {
+                "name": "voteCount",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "voterCount",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_candidateId",
+                "type": "uint256"
+            },
+            {
+                "name": "_addr",
+                "type": "address"
+            },
+            {
+                "name": "_votingSessionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "vote",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "name": "_addr",
+                "type": "address"
+            }
+        ],
+        "name": "addVoter",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "voters",
+        "outputs": [
+            {
+                "name": "name",
+                "type": "string"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_addr",
+                "type": "address"
+            },
+            {
+                "name": "_votingSessionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "alreadyVote",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "name": "_votingSessionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "addCandidate",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "_candidateId",
+                "type": "uint256"
+            }
+        ],
+        "name": "votedEvent",
+        "type": "event"
+    }
 ]
 """
 BSC = "https://data-seed-prebsc-1-s1.binance.org:8545/"
@@ -249,9 +249,16 @@ class res_company(models.Model):
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             _logger.info('add_candidate tx_receipt=%s', tx_receipt)
+            return {
+                'status': 0,
+                'rx_receipt': tx_receipt
+            }
             
         except Exception as e:
-            raise UserError(e)
+            return {
+                'status': -1,
+                'message': e
+            }
 
     def bsc_vote(self, candidate_id, voter_address, voting_session_id):
         try:
@@ -267,9 +274,17 @@ class res_company(models.Model):
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             _logger.info('tx_receipt=%s', tx_receipt)
+            return {
+                'status': 0,
+                'rx_receipt': tx_receipt
+            }
 
         except Exception as e:
-            raise UserError(e)        
+            return {
+                'status': -1,
+                'message': e
+            }
+            
 
 
     def create_account(self, name):
