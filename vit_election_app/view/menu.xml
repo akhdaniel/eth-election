@@ -1,0 +1,7 @@
+<odoo>
+	<data>
+		<menuitem id="vit_election_app_top_menu" name="EVoting" sequence="20" web_icon="vit_election_app,static/description/icon.png" />
+		<menuitem id="vit_election_app_sub_menu" name="Operations" sequence="40" parent="vit_election_app_top_menu" />
+		<menuitem id="vit_election_app_config_menu" name="Configurations" sequence="50" parent="vit_election_app_top_menu" />
+	</data>
+</odoo>

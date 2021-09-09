@@ -1,0 +1,7 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_user_vit_voting_session,access_user_vit_voting_session,model_vit_voting_session,vit_election_app.group_evoting_user,1,0,0,0
+access_manager_vit_voting_session,access_manager_vit_voting_session,model_vit_voting_session,vit_election_app.group_evoting_manager,1,1,1,1
+access_admin_vit_voting_session,access_admin_vit_voting_session,model_vit_voting_session,base.group_system,1,1,1,1
+access_user_vit_vote_record,access_user_vit_vote_record,model_vit_vote_record,vit_election_app.group_evoting_user,1,0,0,0
+access_manager_vit_vote_record,access_manager_vit_vote_record,model_vit_vote_record,vit_election_app.group_evoting_manager,1,1,1,1
+access_admin_vit_vote_record,access_admin_vit_vote_record,model_vit_vote_record,base.group_system,1,1,1,1
