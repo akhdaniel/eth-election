@@ -5,7 +5,8 @@
 	"version": "1.0", 
 	"depends": [
 		'base',
-		'vit_election_app'
+		'vit_election_app',
+		'vit_election_api'
 	],
 	"author": "Akhmad D. Sembiring [vitraining.com]",
 	"category": "Utility",
@@ -28,6 +29,8 @@ Information
 """,
 	"data": [
 		"data/sequence_vote_record.xml",
+		"view/candidate.xml",
+		"view/voter.xml",
 	],
 	"installable": True,
 	"auto_install": False,
