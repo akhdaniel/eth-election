@@ -12,7 +12,7 @@
                     <page name="evoting_candidate" string="Candidate" attrs="{ 'invisible':[('is_candidate','=',False)] }">
                         <group>
                             <field name="is_candidate" />
-                            <field name="vote_cound" />
+                            <field name="vote_count" />
                             <field name="candidate_vote_record_ids" />
                         </group>                       
                     </page>
