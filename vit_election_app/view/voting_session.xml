@@ -50,6 +50,9 @@
                             <page name="candidate_ids" string="Candidate">
                                 <field name="candidate_ids"/>
                             </page>
+                            <page name="vote_record_ids" string="Vote record">
+                                <field name="vote_record_ids"/>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>

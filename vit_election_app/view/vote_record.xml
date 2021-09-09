@@ -14,6 +14,7 @@
                     <field name="tx_hash" />
                     <field name="voter_id" />
                     <field name="candidate_id" />
+                    <field name="voting_session_id" />
                 </tree>
             </field>
         </record>
@@ -49,6 +50,7 @@
                             <group>
                                 <field name="voter_id" />
                                 <field name="candidate_id" />
+                                <field name="voting_session_id" />
                             </group>
                         </group>
                         <notebook>
@@ -72,9 +74,11 @@
                     <field name="tx_hash" select="True"/>
                     <field name="voter_id" select="True"/>
                     <field name="candidate_id" select="True"/>
+                    <field name="voting_session_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Voter" domain="[]" name="group_by_voter_id" context="{'group_by':'voter_id'}"/>
                         <filter string="Candidate" domain="[]" name="group_by_candidate_id" context="{'group_by':'candidate_id'}"/>
+                        <filter string="Voting session" domain="[]" name="group_by_voting_session_id" context="{'group_by':'voting_session_id'}"/>
                     </group>
                 </search>
             </field>
@@ -91,6 +95,7 @@
                     <field name="tx_hash" />
                     <field name="voter_id" />
                     <field name="candidate_id" />
+                    <field name="voting_session_id" />
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
@@ -107,6 +112,11 @@
 
                                         <li>
                                             <span class="text-muted">Candidate</span> <field name="candidate_id"></field>
+                                        </li>
+
+
+                                        <li>
+                                            <span class="text-muted">Voting session</span> <field name="voting_session_id"></field>
                                         </li>
 
                                     </ul>

@@ -15,3 +15,4 @@ class voting_session(models.Model):
 
 
     candidate_ids = fields.One2many(comodel_name="res.partner",  inverse_name="voting_session_id",  string="Candidate",  help="")
+    vote_record_ids = fields.One2many(comodel_name="vit.vote_record",  inverse_name="voting_session_id",  string="Vote record",  help="")

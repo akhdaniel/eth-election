@@ -16,6 +16,7 @@ class vote_record(models.Model):
 
     voter_id = fields.Many2one(comodel_name="res.partner",  string="Voter",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
     candidate_id = fields.Many2one(comodel_name="res.partner",  string="Candidate",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
+    voting_session_id = fields.Many2one(comodel_name="vit.voting_session",  string="Voting session",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
 
     def action_confirm(self):
         self.state = STATES[1][0]
