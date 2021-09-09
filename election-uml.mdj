@@ -663,7 +663,7 @@
 											"top": 245,
 											"width": 124.64892578125,
 											"height": 13,
-											"text": "+description: text",
+											"text": "+description: Text",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1969,7 +1969,7 @@
 								"$ref": "AAAAAAF7yXfx5w2uNvk="
 							},
 							"name": "description",
-							"type": "text"
+							"type": "Text"
 						},
 						{
 							"_type": "UMLAttribute",

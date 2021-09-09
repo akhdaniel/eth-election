@@ -9,7 +9,7 @@ class voting_session(models.Model):
     _name = "vit.voting_session"
     _description = "vit.voting_session"
     name = fields.Char( required=True, string="Name",  help="")
-    description = fields.text( string="Description",  help="")
+    description = fields.Text( string="Description",  help="")
     date_start = fields.Datetime( string="Date start",  help="")
     date_end = fields.Datetime( string="Date end",  help="")
 
