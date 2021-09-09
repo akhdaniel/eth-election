@@ -18,7 +18,7 @@
             </field>
         </record>
 
-        <menuitem id="menu_res_partner" name="Voter" parent="vit_election_app.vit_election_app_config_menu" action="action_voter" sequence="20"/>
+        <menuitem id="menu_voter" name="Voter" parent="vit_election_app.vit_election_app_config_menu" action="action_voter" sequence="20"/>
 
 
     </data>
