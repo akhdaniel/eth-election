@@ -46,6 +46,9 @@
                             </group>
                         </group>
                         <notebook>
+                            <page name="vote_record_ids" string="Vote record">
+                                <field name="vote_record_ids"/>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>

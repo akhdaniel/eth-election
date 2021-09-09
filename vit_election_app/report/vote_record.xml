@@ -23,6 +23,14 @@
                             <strong>Tx hash</strong>
                             <p class="m-0" t-field="doc.tx_hash" />
                         </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Voter</strong>
+                            <p class="m-0" t-field="doc.voter_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Candidate</strong>
+                            <p class="m-0" t-field="doc.candidate_id"/>
+                        </div>
                     </div>
                 </div>
                 <div class="oe_structure"/>

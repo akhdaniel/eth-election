@@ -26,6 +26,28 @@
                     </div>
                 </div>
                 <div class="oe_structure"/>
+                <h2>Vote record</h2>
+                <table class="table table-sm o_main_table" name="vote_record_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>State</td>
+                            <td>Tx hash</td>
+                            <td>Voter</td>
+                            <td>Candidate</td>
+                        </tr>
+                    </thead>
+                    <tbody class="vote_record_ids_tbody">
+                        <tr t-foreach="doc.vote_record_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.state" /></td>
+                            <td><span t-field="line.tx_hash" /></td>
+                            <td><span t-field="line.voter_id" /></td>
+                            <td><span t-field="line.candidate_id" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
             </t>
         </template>
 

@@ -12,6 +12,7 @@
                     <field name="name" />
                     <field name="state" />
                     <field name="tx_hash" />
+                    <field name="candidate_id" />
                 </tree>
             </field>
         </record>
@@ -45,6 +46,7 @@
                                 <field name="tx_hash" />
                             </group>
                             <group>
+                                <field name="candidate_id" />
                             </group>
                         </group>
                         <notebook>
@@ -66,7 +68,9 @@
                     <field name="name" select="True"/>
                     <field name="state" select="True"/>
                     <field name="tx_hash" select="True"/>
+                    <field name="candidate_id" select="True"/>
                     <group string="Group By..">
+                        <filter string="Candidate" domain="[]" name="group_by_candidate_id" context="{'group_by':'candidate_id'}"/>
                     </group>
                 </search>
             </field>
@@ -81,6 +85,7 @@
                     <field name="name" />
                     <field name="state" />
                     <field name="tx_hash" />
+                    <field name="candidate_id" />
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
@@ -89,6 +94,11 @@
                                         <a type="open"><field name="name"/></a>
                                     </h4>
                                     <ul>
+
+                                        <li>
+                                            <span class="text-muted">Candidate</span> <field name="candidate_id"></field>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -104,6 +114,7 @@
             <field name="model">vit.vote_record</field>
             <field name="arch" type="xml">
                 <graph string="Vote record" type="bar">
+                    <field name="candidate_id"/>
                 </graph>
             </field>
         </record>
@@ -112,7 +123,7 @@
             <field name="name">Vote record</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">vit.vote_record</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
             <field name="context">{"search_default_fieldname":1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
