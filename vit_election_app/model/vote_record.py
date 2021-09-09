@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
 
-STATES = [('new','New'),('posted','Posted')]
+STATES = [('draft','New'),('open','Pending'),('done','Posted')]
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, Warning
 
