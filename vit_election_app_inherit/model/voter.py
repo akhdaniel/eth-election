@@ -11,3 +11,5 @@ class voter(models.Model):
     def vote(self, ):
         pass
 
+    def action_create_account(self):
+        pass
