@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <!-- action window -->
-        <record id="action_res_partner" model="ir.actions.act_window">
+        <record id="action_voter" model="ir.actions.act_window">
             <field name="name">Voter</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
@@ -18,7 +18,7 @@
             </field>
         </record>
 
-        <menuitem id="menu_res_partner" name="Voter" parent="vit_election_app.vit_election_app_config_menu" action="action_res_partner" sequence="20"/>
+        <menuitem id="menu_res_partner" name="Voter" parent="vit_election_app.vit_election_app_config_menu" action="action_voter" sequence="20"/>
 
 
     </data>

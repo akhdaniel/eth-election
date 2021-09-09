@@ -3,7 +3,7 @@
     <data>
 
         <!-- action window -->
-        <record id="action_res_partner" model="ir.actions.act_window">
+        <record id="action_candidate" model="ir.actions.act_window">
             <field name="name">Candidate</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
@@ -19,7 +19,7 @@
             </field>
         </record>
 
-        <menuitem id="menu_res_partner" name="Candidate" parent="vit_election_app.vit_election_app_config_menu" action="action_res_partner" sequence="30"/>
+        <menuitem id="menu_res_partner" name="Candidate" parent="vit_election_app.vit_election_app_config_menu" action="action_candidate" sequence="30"/>
 
 
     </data>
