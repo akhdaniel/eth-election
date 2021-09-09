@@ -14,7 +14,7 @@ class vote_record(models.Model):
     tx_hash = fields.Char( string="Tx hash",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
 
 
-    voter_id = fields.One2many(comodel_name="res.partner",  inverse_name="vote_record_ids",  string="Voter",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
+    voter_id = fields.Many2one(comodel_name="res.partner",  string="Voter",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
     candidate_id = fields.Many2one(comodel_name="res.partner",  string="Candidate",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
 
     def action_confirm(self):

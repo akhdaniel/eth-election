@@ -12,6 +12,7 @@
                     <field name="name" />
                     <field name="state" />
                     <field name="tx_hash" />
+                    <field name="voter_id" />
                     <field name="candidate_id" />
                 </tree>
             </field>
@@ -46,6 +47,7 @@
                                 <field name="tx_hash" />
                             </group>
                             <group>
+                                <field name="voter_id" />
                                 <field name="candidate_id" />
                             </group>
                         </group>
@@ -68,8 +70,10 @@
                     <field name="name" select="True"/>
                     <field name="state" select="True"/>
                     <field name="tx_hash" select="True"/>
+                    <field name="voter_id" select="True"/>
                     <field name="candidate_id" select="True"/>
                     <group string="Group By..">
+                        <filter string="Voter" domain="[]" name="group_by_voter_id" context="{'group_by':'voter_id'}"/>
                         <filter string="Candidate" domain="[]" name="group_by_candidate_id" context="{'group_by':'candidate_id'}"/>
                     </group>
                 </search>
@@ -85,6 +89,7 @@
                     <field name="name" />
                     <field name="state" />
                     <field name="tx_hash" />
+                    <field name="voter_id" />
                     <field name="candidate_id" />
                     <templates>
                         <t t-name="kanban-box">
@@ -94,6 +99,11 @@
                                         <a type="open"><field name="name"/></a>
                                     </h4>
                                     <ul>
+
+                                        <li>
+                                            <span class="text-muted">Voter</span> <field name="voter_id"></field>
+                                        </li>
+
 
                                         <li>
                                             <span class="text-muted">Candidate</span> <field name="candidate_id"></field>
@@ -114,7 +124,7 @@
             <field name="model">vit.vote_record</field>
             <field name="arch" type="xml">
                 <graph string="Vote record" type="bar">
-                    <field name="candidate_id"/>
+                    <field name="voter_id"/>
                 </graph>
             </field>
         </record>
