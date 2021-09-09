@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        
+        
+        <record id="partner_form" model="ir.ui.view">
+            <field name="name">partner_form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page name="evoting_candidate" string="Candidate" attrs="{ 'invisible':[('is_candidate','=',False)] }">
+                        <group>
+                            <field name="is_candidate" />
+                            <field name="vote_cound" />
+                            <field name="candidate_vote_record_ids" />
+                        </group>                       
+                    </page>
+                    <page name="evoting_voter" string="Voter" attrs="{ 'invisible':[('is_voter','=',False)] }">
+                        <group>
+                            <field name="is_voter" />
+                            <field name="address" />
+                            <field name="voter_vote_record_ids" />
+                        </group>                       
+                    </page>
+                </notebook>
+            </field>
+        </record>
+        
+        <!-- primary|extension Inherited .:Form:. view for "model" -->
+        <record id="view_model_form_inherited" model="ir.ui.view">
+            <field name="name">view.model.form inherited</field>
+            <field name="model">model</field>
+            <!-- Please veryfiy, that the following inherited view really sticks to the naming convention. -->
+            <field name="inherit_id" ref="module_name.view_model_form" />
+            <field name="type">form</field>
+            <field name="mode">primary|extension</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <!-- 
+                <xpath expr="//field[@name='name']" position="after">
+                    
+                </xpath>
+                 -->
+            </field>
+        </record>
+        
+        <!-- primary|extension Inherited .:Search:. view for "model" -->
+        <record id="view_model_search_inherited" model="ir.ui.view">
+            <field name="name">view.model.search inherited</field>
+            <field name="model">model</field>
+            <!-- Please veryfiy, that the following inherited view really sticks to the naming convention. -->
+            <field name="inherit_id" ref="module_name.view_model_search" />
+            <field name="type">search</field>
+            <field name="mode">primary|extension</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <!-- 
+                <xpath expr="//field[@name='name']" position="after">
+                    
+                </xpath>
+                -->
+            </field>
+        </record>
+        
 
         <!-- action window -->
         <record id="action_candidate" model="ir.actions.act_window">

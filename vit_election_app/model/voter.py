@@ -18,4 +18,4 @@ class voter(models.Model):
         pass
 
 
-    vote_record_ids = fields.One2many(comodel_name="vit.vote_record",  inverse_name="voter_id",  string="Vote record",  help="")
+    voter_vote_record_ids = fields.One2many(comodel_name="vit.vote_record",  inverse_name="voter_id",  string="Voter vote record",  help="")

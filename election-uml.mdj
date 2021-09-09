@@ -1412,16 +1412,16 @@
 										"$ref": "AAAAAAF7yY0b6w9kg/8="
 									},
 									"font": "Arial;13;0",
-									"left": 189,
+									"left": 171,
 									"top": 595,
-									"width": 100.08984375,
+									"width": 136.220703125,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
 									"hostEdge": {
 										"$ref": "AAAAAAF7yY0b6w9m8RE="
 									},
-									"text": "+vote_record_ids"
+									"text": "+voter_vote_record_ids"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1685,16 +1685,16 @@
 										"$ref": "AAAAAAF7yY0sDA+2x6k="
 									},
 									"font": "Arial;13;0",
-									"left": 328,
+									"left": 297,
 									"top": 502,
-									"width": 100.08984375,
+									"width": 163.69970703125,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
 									"hostEdge": {
 										"$ref": "AAAAAAF7yY0sDA+4WuI="
 									},
-									"text": "+vote_record_ids"
+									"text": "+candidate_vote_record_ids"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2299,7 +2299,7 @@
 								"_parent": {
 									"$ref": "AAAAAAF7yY0b6w9iWPU="
 								},
-								"name": "vote_record_ids",
+								"name": "voter_vote_record_ids",
 								"reference": {
 									"$ref": "AAAAAAF7yXbZiw0wqqU="
 								},
@@ -2331,7 +2331,7 @@
 								"_parent": {
 									"$ref": "AAAAAAF7yY0sDA+0tE0="
 								},
-								"name": "vote_record_ids",
+								"name": "candidate_vote_record_ids",
 								"reference": {
 									"$ref": "AAAAAAF7yXcuWA1oH8A="
 								},
