@@ -13,7 +13,7 @@ class candidate(models.Model):
     _inherit = "res.partner"
 
     def action_add_candidate(self):
-        res = self.env['res.company'].bsc_add_candidate(self.name, self.voting_session_id.id)
+        res = self.env['res.company'].bsc_add_candidate(self.name, self.address, self.voting_session_id.id)
         _logger.info('res = %s', res)
         if res['status'] == -1:
             raise UserError(res['message'])
