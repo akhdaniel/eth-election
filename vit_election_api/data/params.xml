@@ -1,0 +1,233 @@
+<odoo>
+<data noupdate="1">
+    <record model="ir.config_parameter" id="vit_election_contract_address">
+        <field name="key">vit_election.contract_address</field>
+        <field name="value">0xCB68F69779471c680536e45A9fFa4e07Cf34C553</field>
+    </record>
+    <record model="ir.config_parameter" id="vit_election_system_address">
+        <field name="key">vit_election.system_address</field>
+        <field name="value">0x53Abd70D632d2C0ba16f1481E37Dee11D45eaB5d</field>
+    </record>
+    <record model="ir.config_parameter" id="vit_election_system_private_key">
+        <field name="key">vit_election.system_private_key</field>
+        <field name="value">facc87a5ff3dcd83f567b2dff733baa073e2b5a284c9fed8e7809dc4f396388a</field>
+    </record>
+    <record model="ir.config_parameter" id="vit_election_bsc_url">
+        <field name="key">vit_election.bsc_url</field>
+        <field name="value">https://data-seed-prebsc-1-s1.binance.org:8545</field>
+    </record>
+    <record model="ir.config_parameter" id="vit_election_chain_id">
+        <field name="key">vit_election.chain_id</field>
+        <field name="value">97</field>
+    </record>
+    <record model="ir.config_parameter" id="vit_election_abi">
+        <field name="key">vit_election.abi</field>
+        <field name="value">[
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "voteRecords",
+        "outputs": [
+            {
+                "name": "addr",
+                "type": "address"
+            },
+            {
+                "name": "votingSessionId",
+                "type": "uint256"
+            },
+            {
+                "name": "candidateId",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "candidatesCount",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "candidates",
+        "outputs": [
+            {
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "votingSessionId",
+                "type": "uint256"
+            },
+            {
+                "name": "voteCount",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "voterCount",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_candidateId",
+                "type": "uint256"
+            },
+            {
+                "name": "_addr",
+                "type": "address"
+            },
+            {
+                "name": "_votingSessionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "vote",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "name": "_addr",
+                "type": "address"
+            }
+        ],
+        "name": "addVoter",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "voters",
+        "outputs": [
+            {
+                "name": "name",
+                "type": "string"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_addr",
+                "type": "address"
+            },
+            {
+                "name": "_votingSessionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "alreadyVote",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "name": "_votingSessionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "addCandidate",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "_candidateId",
+                "type": "uint256"
+            }
+        ],
+        "name": "votedEvent",
+        "type": "event"
+    }
+]</field>
+    </record>
+</data>
+</odoo>
