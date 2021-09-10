@@ -38,7 +38,10 @@ class res_company(models.Model):
     def bsc_add_candidate(self, candidate_name, voting_session_id):
         try:
             web3,contract,system_account,system_private_key,chain_id = self.bsc_connect()
-            transaction = contract.functions.addCandidate(candidate_name, voting_session_id).buildTransaction({
+            account = self.bsc_create_account(candidate_name)
+            candidate_address = account.address
+
+            transaction = contract.functions.addCandidate(candidate_name, candidate_address, voting_session_id).buildTransaction({
                     'chainId': chain_id,
                     'gas': 1000000,
                     'gasPrice': web3.eth.gasPrice,
@@ -51,6 +54,8 @@ class res_company(models.Model):
 
             return {
                 'status': 0,
+                'address': str(account.address),
+                'private_key': str(account.privateKey),                
                 'rx_receipt': str(tx_receipt)
             }
             
