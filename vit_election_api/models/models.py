@@ -120,11 +120,11 @@ class res_company(models.Model):
                 'rx_receipt': str(tx_receipt),
                 'voteRecordCount': contract.functions.getVoteRecordCount().call(),
             }
-        # except exceptions.SolidityError as e:
-        #     return {
-        #         'status': -1,
-        #         'message': str(e) + '\nCheck validity of voter and candidate, or duplicate voting in a session!' 
-        #     }
+        except exceptions.SolidityError as e:
+            return {
+                'status': -1,
+                'message': str(e) + '\nCheck validity of voter and candidate, or duplicate voting in a session!' 
+            }
         except Exception as e:
             return {
                 'status': -1,
