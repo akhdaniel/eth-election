@@ -28,7 +28,7 @@ class res_company(models.Model):
 
         res = "bsc connected: {}\n".format( web3.isConnected() )
         res += 'candidatesCount={}\n'.format( contract.functions.candidatesCount().call())
-        res += 'candidates(1)={}\n'.format(contract.functions.candidates(1).call())
+        # res += 'candidates(1)={}\n'.format(contract.functions.candidates(1).call())
         res += 'nonce={}\n'.format( web3.eth.get_transaction_count(system_account))
         res += 'gasPrice={}\n'.format(web3.eth.gas_price)
         _logger.info('bsc_test_connection: %s', res)
