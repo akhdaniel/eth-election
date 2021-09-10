@@ -29,6 +29,7 @@
                             <field name="vote_count" />
                             <field name="voting_session_id" />
                             <field name="candidate_vote_record_ids" />
+                            <field name="rx_receipt" />
                         </group>                       
                     </page>
                     <page name="evoting_voter" string="Voter" attrs="{ 'invisible':[('is_voter','=',False)] }">
@@ -36,6 +37,7 @@
                             <field name="is_voter" />
                             <field name="address" />
                             <field name="voter_vote_record_ids" />
+                            <field name="rx_receipt" />
                         </group>                       
                     </page>
                 </notebook>
