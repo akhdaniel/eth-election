@@ -4,6 +4,11 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, Warning
 
+import logging
+_logger = logging.getLogger(__name__)
+
+
+
 class voter(models.Model):
     _name = "res.partner"
     _inherit = "res.partner"
@@ -12,4 +17,6 @@ class voter(models.Model):
         pass
 
     def action_create_account(self):
-        pass
+        res = self.env['res.company'].bsc_create_account(self.name)
+        _logger.info('res = %s', res)
+        self.address = res.address
