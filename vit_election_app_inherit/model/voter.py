@@ -19,7 +19,7 @@ class voter(models.Model):
     def action_add_voter(self):
         res = self.env['res.company'].bsc_add_voter(self.name)
         _logger.info('res = %s', res)
-        self.address = res.address
+        self.address = res['address']
 
     def action_add_candidate(self):
         res = self.env['res.company'].bsc_add_candidate(self.name, self.voting_session_id.id)
