@@ -4,6 +4,7 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 import logging
 _logger = logging.getLogger(__name__)
+from web3 import exceptions
 
 
 class res_company(models.Model):
@@ -119,7 +120,11 @@ class res_company(models.Model):
                 'rx_receipt': str(tx_receipt),
                 'voteRecordCount': contract.functions.voteRecordCount().call(),
             }
-
+        except exceptions.SolidityError as e:
+            return {
+                'status': -1,
+                'message': str(e)
+            }
         except Exception as e:
             return {
                 'status': -1,
