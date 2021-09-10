@@ -118,17 +118,17 @@ class res_company(models.Model):
             return {
                 'status': 0,
                 'rx_receipt': str(tx_receipt),
-                'voteRecordCount': contract.functions.voteRecordCount().call(),
+                'voteRecordCount': contract.functions.getVoteRecordCount().call(),
             }
-        except exceptions.SolidityError as e:
-            return {
-                'status': -1,
-                'message': str(e) + '\nCheck validity of voter and candidate, or duplicate voting in a session!' 
-            }
+        # except exceptions.SolidityError as e:
+        #     return {
+        #         'status': -1,
+        #         'message': str(e) + '\nCheck validity of voter and candidate, or duplicate voting in a session!' 
+        #     }
         except Exception as e:
             return {
                 'status': -1,
-                'message': str(e)
+                'message': str(e) + '\nCheck validity of voter and candidate, or duplicate voting in a session!' 
             }
 
     def bsc_create_account(self, name):
