@@ -8,6 +8,14 @@
             <field name="inherit_id" ref="vit_election_app.view_vit_vote_record_form"/>
             <field name="arch" type="xml">
                 <field name="rx_receipt" position="replace"/>
+
+                <field name="voter_id" position="attributes">
+                    <attribute name="domain">[('is_voter','=',True)]</attribute>
+                </field>
+                <field name="candidate_id" position="attributes">
+                    <attribute name="domain">[('is_candidate','=',True)]</attribute>
+                </field>
+
                 <notebook position="inside">
                     <page name="evoting" string="Transaction">
                         <group>
