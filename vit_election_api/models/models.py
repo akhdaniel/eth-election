@@ -123,7 +123,7 @@ class res_company(models.Model):
         except exceptions.SolidityError as e:
             return {
                 'status': -1,
-                'message': str(e)
+                'message': 'Check validity of voter and candidate, or duplicate voting in a session' + str(e)
             }
         except Exception as e:
             return {
