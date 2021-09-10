@@ -102,6 +102,8 @@ class res_company(models.Model):
             signed_txn = web3.eth.account.signTransaction(transaction, system_private_key)
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
+            _logger.info('voteRecordCount=%s', contract.functions.voteRecordCount().call())
+            
             return {
                 'status': 0,
                 'rx_receipt': str(tx_receipt)
