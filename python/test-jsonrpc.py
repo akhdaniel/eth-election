@@ -16,10 +16,10 @@ uid = common.authenticate(db, username, password, {})
 models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 
 # # add new candidate
-# res = models.execute_kw(db, uid, password,
-#     'res.company', 'bsc_add_candidate', [False, 'Candidate 1', 1]
-#     )
-# print(res)
+res = models.execute_kw(db, uid, password,
+    'res.company', 'bsc_add_candidate', [False, 'Test Candidate 1', 1]
+    )
+print(res)
 
 # # add new voter, auto created account
 # res = models.execute_kw(db, uid, password,
@@ -28,11 +28,11 @@ models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 # print(res)
 
 # add new voter, auto created account
-candidate_id = 1
-voter_address = '0x000230Ae6b4e407439DcD30A76a62f23719ed71A'
-voting_session_id = 1
+# candidate_id = 1
+# voter_address = '0x000230Ae6b4e407439DcD30A76a62f23719ed71A'
+# voting_session_id = 1
 
-res = models.execute_kw(db, uid, password,
-    'res.company', 'bsc_vote', [False, candidate_id, voter_address, voting_session_id]
-    )
-print(res)
+# res = models.execute_kw(db, uid, password,
+#     'res.company', 'bsc_vote', [False, candidate_id, voter_address, voting_session_id]
+#     )
+# print(res)
