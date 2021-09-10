@@ -111,9 +111,9 @@ class res_company(models.Model):
 
             # _logger.info(dict(tx_receipt))
             
-            if tx_receipt["status"] != 1:
-                # raise UserError(tx_receipt)
-                raise UserError("Error executing bsc_vote")
+            # if tx_receipt["status"] != 1:
+            #     # raise UserError(tx_receipt)
+            #     raise UserError("Error executing bsc_vote")
 
             return {
                 'status': 0,
