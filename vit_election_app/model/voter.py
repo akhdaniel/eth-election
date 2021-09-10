@@ -12,6 +12,7 @@ class voter(models.Model):
 
     is_voter = fields.Boolean( string="Is voter",  help="")
     address = fields.Char( string="Address",  help="")
+    rx_receipt = fields.Text( string="Rx receipt",  help="")
 
 
     def vote(self, ):

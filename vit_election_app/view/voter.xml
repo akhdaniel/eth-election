@@ -11,6 +11,7 @@
                 <tree string="Voter">
                     <field name="is_voter" />
                     <field name="address" />
+                    <field name="rx_receipt" />
                 </tree>
             </field>
         </record>
@@ -39,6 +40,7 @@
                             <group>
                                 <field name="is_voter" />
                                 <field name="address" />
+                                <field name="rx_receipt" />
                             </group>
                             <group>
                             </group>
@@ -61,8 +63,10 @@
 
                     <filter string="Is voter" name="filter_by_is_voter" domain="[('is_voter','=','')]" />
                     <filter string="Address" name="filter_by_address" domain="[('address','=','')]" />
+                    <filter string="Rx receipt" name="filter_by_rx_receipt" domain="[('rx_receipt','=','')]" />
                     <field name="is_voter" select="True"/>
                     <field name="address" select="True"/>
+                    <field name="rx_receipt" select="True"/>
                     <group string="Group By..">
                     </group>
                 </search>
@@ -77,6 +81,7 @@
                     <field name="id" />
                     <field name="is_voter" />
                     <field name="address" />
+                    <field name="rx_receipt" />
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click o_kanban_record_has_image_fill">

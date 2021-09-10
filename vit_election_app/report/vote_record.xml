@@ -20,8 +20,8 @@
                             <p class="m-0" t-field="doc.state" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
-                            <strong>Tx hash</strong>
-                            <p class="m-0" t-field="doc.tx_hash" />
+                            <strong>Rx receipt</strong>
+                            <p class="m-0" t-field="doc.rx_receipt" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
                             <strong>Voter</strong>

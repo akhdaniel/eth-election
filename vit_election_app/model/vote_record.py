@@ -11,7 +11,7 @@ class vote_record(models.Model):
     _description = "vit.vote_record"
     name = fields.Char( required=True, default="New", readonly=True,  string="Name",  help="")
     state = fields.Selection(selection=STATES,  readonly=True, default=STATES[0][0],  string="State",  help="")
-    tx_hash = fields.Char( string="Tx hash",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
+    rx_receipt = fields.Text( string="Rx receipt",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
 
 
     voter_id = fields.Many2one(comodel_name="res.partner",  string="Voter",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
