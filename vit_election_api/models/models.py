@@ -11,7 +11,7 @@ class res_company(models.Model):
     _inherit = 'res.company'
 
     def bsc_connect(self):
-        
+
         ICP = self.env['ir.config_parameter'].sudo()
         ABI = ICP.get_param('vit_election.abi')
         BSC = ICP.get_param('vit_election.bsc_url')
@@ -37,7 +37,7 @@ class res_company(models.Model):
 
     def bsc_add_candidate(self, candidate_name, voting_session_id):
         try:
-            web3,contract,my_account,my_private_key,chain_id = self.bsc_connect(self)
+            web3,contract,my_account,my_private_key,chain_id = self.bsc_connect()
             transaction = contract.functions.addCandidate(candidate_name, voting_session_id).buildTransaction({
                     'chainId': chain_id,
                     'gas': 1000000,
@@ -62,11 +62,12 @@ class res_company(models.Model):
 
     def bsc_add_voter(self, voter_name):
         try:
+            web3,contract,my_account,my_private_key,chain_id = self.bsc_connect()
             account = self.bsc_create_account(voter_name)
             voter_address = account.address
 
             transaction = contract.functions.addVoter(voter_name, voter_address).buildTransaction({
-                    'chainId': CHAIN_ID,
+                    'chainId': chain_id,
                     'gas': 1000000,
                     'gasPrice': web3.eth.gasPrice,
                     'nonce': web3.eth.getTransactionCount(my_account)
@@ -90,7 +91,7 @@ class res_company(models.Model):
 
     def bsc_vote(self, candidate_id, voter_address, voting_session_id):
         try:
-            web3,contract,my_account,my_private_key,chain_id = self.bsc_connect(self)
+            web3,contract,my_account,my_private_key,chain_id = self.bsc_connect()
             transaction = contract.functions.vote(candidate_id, voter_address, voting_session_id).buildTransaction({
                     'chainId': chain_id,
                     'gas': 1000000,
@@ -114,7 +115,7 @@ class res_company(models.Model):
 
     def bsc_create_account(self, name):
         try:
-            web3,contract,my_account,my_private_key,chain_id = self.bsc_connect(self)
+            web3,contract,my_account,my_private_key,chain_id = self.bsc_connect()
             account = web3.eth.account.create(name)
             return account
         except Exception as e:
