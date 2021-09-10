@@ -98,7 +98,7 @@ class res_company(models.Model):
     def bsc_vote(self, candidate_address, voter_address, voting_session_id):
         try:
             web3,contract,system_account,system_private_key,chain_id = self.bsc_connect()
-            contract.functions.vote(candidate_address, voter_address, voting_session_id).gasEstimate()
+            contract.functions.vote(candidate_address, voter_address, voting_session_id).estimateGas()
 
             transaction = contract.functions.vote(candidate_address, voter_address, voting_session_id).buildTransaction({
                     'chainId': chain_id,
