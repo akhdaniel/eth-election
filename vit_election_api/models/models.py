@@ -109,8 +109,10 @@ class res_company(models.Model):
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
 
             _logger.info(dict(tx_receipt))
-            success = tx_receipt["status"]
-            _logger.info('statess==%s', success)
+            
+            if tx_receipt["status"] != 1:
+                raise UserError(tx_receipt)
+
             return {
                 'status': 0,
                 'rx_receipt': str(tx_receipt),

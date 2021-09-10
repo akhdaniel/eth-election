@@ -24,21 +24,17 @@ class vote_record(models.Model):
         self.state = STATES[1][0]
 
     def action_done(self):
-        try:
-            self.state = STATES[2][0]
-            res = self.env['res.company'].bsc_vote(self.candidate_id.address, self.voter_id.address, self.voting_session_id.id)
-            _logger.info('res = %s', res)
-            
-            if res['status'] == -1:
-                raise UserError(res['message'])
 
-            if res['rx_receipt']['status'] != 1:
-                raise UserError(res['rx_receipt'])
-
-            self.rx_receipt = res['rx_receipt']   
+        self.state = STATES[2][0]
+        res = self.env['res.company'].bsc_vote(self.candidate_id.address, self.voter_id.address, self.voting_session_id.id)
+        _logger.info('res = %s', res)
+        
+        if res['status'] == -1:
+            raise UserError(res['message'])
             
-        except Exception as e:
-            raise UserError(str(e))
+        self.rx_receipt = res['rx_receipt']   
+
+
 
     def action_draft(self):
         self.state = STATES[0][0]
