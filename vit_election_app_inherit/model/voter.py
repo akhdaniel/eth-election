@@ -16,7 +16,12 @@ class voter(models.Model):
     def vote(self, ):
         pass
 
-    def action_create_account(self):
-        res = self.env['res.company'].bsc_create_account(self.name)
+    def action_add_voter(self):
+        res = self.env['res.company'].bsc_add_voter(self.name)
         _logger.info('res = %s', res)
         self.address = res.address
+
+    def action_add_candidate(self):
+        res = self.env['res.company'].bsc_add_candidate(self.name, self.voting_session_id)
+        _logger.info('res = %s', res)
+        # self.address = res.address

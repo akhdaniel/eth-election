@@ -10,8 +10,15 @@
             <field name="arch" type="xml">
 
                 <div name="button_box" position="inside">
-                    <button class="oe_stat_button o_res_partner_tip_opp" type="object" name="action_create_account" icon="fa-user">
+                    <button class="oe_stat_button o_res_partner_tip_opp" type="object" name="action_add_voter" 
+                        attrs="{'invisible':[('is_voter','=',False)]}"
+                        icon="fa-user">
                         Create Account
+                    </button>
+                    <button class="oe_stat_button o_res_partner_tip_opp" type="object" name="action_add_candidate" 
+                        attrs="{'invisible':[('is_candidate','=',False)]}"
+                        icon="fa-user">
+                        Create Candidate
                     </button>
                 </div>
 
@@ -20,6 +27,7 @@
                         <group>
                             <field name="is_candidate" />
                             <field name="vote_count" />
+                            <field name="voting_session_id" />
                             <field name="candidate_vote_record_ids" />
                         </group>                       
                     </page>
