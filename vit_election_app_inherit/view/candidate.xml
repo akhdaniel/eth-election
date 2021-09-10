@@ -26,19 +26,20 @@
                     <page name="evoting_candidate" string="Candidate" attrs="{ 'invisible':[('is_candidate','=',False)] }">
                         <group>
                             <field name="is_candidate" />
+                            <field name="address" />
                             <field name="vote_count" />
                             <field name="voting_session_id" />
-                            <field name="candidate_vote_record_ids" />
                             <field name="rx_receipt" />
-                        </group>                       
+                        </group>                  
+                        <field name="candidate_vote_record_ids" />
                     </page>
                     <page name="evoting_voter" string="Voter" attrs="{ 'invisible':[('is_voter','=',False)] }">
                         <group>
                             <field name="is_voter" />
                             <field name="address" />
-                            <field name="voter_vote_record_ids" />
                             <field name="rx_receipt" />
                         </group>                       
+                        <field name="voter_vote_record_ids" />
                     </page>
                 </notebook>
             </field>
