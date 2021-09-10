@@ -94,10 +94,10 @@ class res_company(models.Model):
                 'message': str(e)
             }
 
-    def bsc_vote(self, candidate_id, voter_address, voting_session_id):
+    def bsc_vote(self, candidate_address, voter_address, voting_session_id):
         try:
             web3,contract,system_account,system_private_key,chain_id = self.bsc_connect()
-            transaction = contract.functions.vote(candidate_id, voter_address, voting_session_id).buildTransaction({
+            transaction = contract.functions.vote(candidate_address, voter_address, voting_session_id).buildTransaction({
                     'chainId': chain_id,
                     'gas': 1000000,
                     'gasPrice': web3.eth.gasPrice,
@@ -107,11 +107,11 @@ class res_company(models.Model):
             signed_txn = web3.eth.account.signTransaction(transaction, system_private_key)
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
-            _logger.info('voteRecordCount=%s', contract.functions.voteRecordCount().call())
             
             return {
                 'status': 0,
-                'rx_receipt': str(tx_receipt)
+                'rx_receipt': str(tx_receipt),
+                'voteRecordCount': contract.functions.voteRecordCount().call(),
             }
 
         except Exception as e:
