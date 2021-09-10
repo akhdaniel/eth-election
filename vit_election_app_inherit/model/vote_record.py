@@ -5,6 +5,11 @@ STATES = [('draft','New'),('open','Pending'),('done','Posted')]
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, Warning
 
+import logging
+_logger = logging.getLogger(__name__)
+
+
+
 class vote_record(models.Model):
     _name = "vit.vote_record"
     _inherit = "vit.vote_record"
@@ -20,6 +25,9 @@ class vote_record(models.Model):
 
     def action_done(self):
         self.state = STATES[2][0]
+        res = self.env['res.company'].bsc_vote(self.candidate_id.id, self.voter_id.address, self.voting_session_id.id)
+        _logger.info('res = %s', res)
+        self.rx_receipt = res['rx_receipt']        
 
     def action_draft(self):
         self.state = STATES[0][0]
