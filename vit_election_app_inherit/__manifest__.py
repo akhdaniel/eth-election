@@ -31,6 +31,7 @@ Information
 		"data/sequence_vote_record.xml",
 		"view/candidate.xml",
 		"view/voter.xml",
+		"view/vote_record.xml",
 	],
 	"installable": True,
 	"auto_install": False,
