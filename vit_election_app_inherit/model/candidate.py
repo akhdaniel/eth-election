@@ -13,6 +13,8 @@ class candidate(models.Model):
     _inherit = "res.partner"
 
     def action_add_candidate(self):
+        if not self.voting_session_id:
+            raise UserError('voting session cannot empty!')
         res = self.env['res.company'].bsc_add_candidate(self.name, self.voting_session_id.id)
         _logger.info('res = %s', res)
         if res['status'] == -1:

@@ -28,11 +28,11 @@ print(res)
 # print(res)
 
 # add new voter, auto created account
-candidate_address = '0xfB176Ea72b011cdD2bE62417A242Fc3166218B3b'
-voter_address = '0x000230Ae6b4e407439DcD30A76a62f23719ed71A'
-voting_session_id = 1
+# candidate_address = '0xfB176Ea72b011cdD2bE62417A242Fc3166218B3b'
+# voter_address = '0x000230Ae6b4e407439DcD30A76a62f23719ed71A'
+# voting_session_id = 1
 
-res = models.execute_kw(db, uid, password,
-    'res.company', 'bsc_vote', [False, candidate_address, voter_address, voting_session_id]
-    )
-print(res)
+# res = models.execute_kw(db, uid, password,
+#     'res.company', 'bsc_vote', [False, candidate_address, voter_address, voting_session_id]
+#     )
+# print(res)

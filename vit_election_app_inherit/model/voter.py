@@ -21,6 +21,7 @@ class voter(models.Model):
         _logger.info('res = %s', res)
         if res['status'] == -1:
             raise UserError(res['message'])
+        
         self.address = res['address']
         self.rx_receipt = res['rx_receipt']
 
