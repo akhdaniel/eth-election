@@ -6,7 +6,6 @@ import logging
 _logger = logging.getLogger(__name__)
 from web3 import exceptions
 
-
 class res_company(models.Model):
     _name = 'res.company'
     _inherit = 'res.company'
@@ -98,6 +97,7 @@ class res_company(models.Model):
     def bsc_vote(self, candidate_address, voter_address, voting_session_id):
         try:
             web3,contract,system_account,system_private_key,chain_id = self.bsc_connect()
+
             contract.functions.vote(candidate_address, voter_address, voting_session_id).estimateGas()
 
             transaction = contract.functions.vote(candidate_address, voter_address, voting_session_id).buildTransaction({
@@ -125,7 +125,7 @@ class res_company(models.Model):
         except exceptions.SolidityError as e:
             return {
                 'status': -1,
-                'message': str(e) + '\nCheck validity of voter and candidate, or duplicate voting in a session!' 
+                'message': str(e) 
             }
         except Exception as e:
             return {
