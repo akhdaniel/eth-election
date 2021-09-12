@@ -149,3 +149,21 @@ class res_company(models.Model):
                 'message': e
             }
 
+    def bsc_get_candidates(self, voting_session_id=None):
+        try:
+            web3,contract,system_account,system_private_key,chain_id = self.bsc_connect()
+            res = contract.functions.getAllCandidates().call()
+            return {
+                'status': 0,
+                'candidates': res
+            }
+        except exceptions.SolidityError as e:
+            return {
+                'status': -1,
+                'message': str(e) 
+            }
+        except Exception as e:
+            return {
+                'status': -1,
+                'message': str(e) 
+            }
