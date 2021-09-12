@@ -20,6 +20,10 @@
                             <p class="m-0" t-field="doc.state" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
+                            <strong>Rx receipt</strong>
+                            <p class="m-0" t-field="doc.rx_receipt" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
                             <strong>Candidate</strong>
                             <p class="m-0" t-field="doc.candidate_id"/>
                         </div>

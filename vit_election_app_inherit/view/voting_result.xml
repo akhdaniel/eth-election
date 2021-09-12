@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- form view -->
+        <record id="view_vit_voting_result_form2" model="ir.ui.view">
+            <field name="name">vit_voting_result_form2</field>
+            <field name="model">vit.voting_result</field>
+            <field name="type">form</field>
+            <field name="inherit_id" res="vit_election_app.view_vit_voting_result_form"/>
+            <field name="arch" type="xml">
+                <header position="inside">
+                    <button string="Get Result" type="object" name="action_get_result" states="draft" />
+                </header>
+            </field>
+        </record>
+ 
+    </data>
+</odoo>
