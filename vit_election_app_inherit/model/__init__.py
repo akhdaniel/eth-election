@@ -3,3 +3,4 @@ from . import voter
 from . import candidate
 from . import voting_session
 from . import vote_record
+from . import voting_result
