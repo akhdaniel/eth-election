@@ -25,5 +25,20 @@
                 </notebook>
             </field>
         </record>
+
+
+        <!-- search -->
+        <record id="view_vit_vote_record_search" model="ir.ui.view">
+            <field name="name">vit_vote_record</field>
+            <field name="model">vit.vote_record</field>
+            <field name="inherit_id" ref="vit_election_app.view_vit_vote_record_search"/>
+            <field name="arch" type="xml">
+                <search string="Vote record">
+                    <filter string="Validated" name="filter_validated" domain="[('name','=','done')]" />
+                    <filter string="Pending" name="filter_pending" domain="[('state','=','open')]" />
+                    <filter string="Draft" name="filter_draft" domain="[('state','=','draft')]" />
+                </search>
+            </field>
+        </record>        
     </data>
 </odoo>
