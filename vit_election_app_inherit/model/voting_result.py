@@ -12,6 +12,7 @@ _logger = logging.getLogger(__name__)
 class voting_result(models.Model):
 
     _name = "vit.voting_result"
+    _inherit = "vit.voting_result"
 
     def action_get_result(self):
         res = self.env['res.company'].bsc_get_candidates()
