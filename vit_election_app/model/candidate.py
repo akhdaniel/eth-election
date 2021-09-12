@@ -17,3 +17,4 @@ class candidate(models.Model):
 
     voting_session_id = fields.Many2one(comodel_name="vit.voting_session",  string="Voting session",  help="")
     candidate_vote_record_ids = fields.One2many(comodel_name="vit.vote_record",  inverse_name="candidate_id",  string="Candidate vote record",  help="")
+    voting_result_ids = fields.One2many(comodel_name="vit.voting_result",  inverse_name="candidate_id",  string="Voting result",  help="")

@@ -2,29 +2,33 @@
 <odoo>
     <data>
         <!-- tree view -->
-        <record id="view_res_partner_tree" model="ir.ui.view">
-            <field name="name">res_partner_tree</field>
-            <field name="model">res.partner</field>
+        <record id="view_vit_voting_result_tree" model="ir.ui.view">
+            <field name="name">vit_voting_result_tree</field>
+            <field name="model">vit.voting_result</field>
             <field name="type">tree</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <tree string="Candidate">
-                    <field name="is_candidate" />
-                    <field name="vote_count" />
+                <tree string="Voting result">
+                    <field name="name" />
+                    <field name="state" />
                     <field name="candidate_id" />
                     <field name="voting_session_id" />
                 </tree>
             </field>
         </record>
         <!-- form view -->
-        <record id="view_res_partner_form" model="ir.ui.view">
-            <field name="name">res_partner_form</field>
-            <field name="model">res.partner</field>
+        <record id="view_vit_voting_result_form" model="ir.ui.view">
+            <field name="name">vit_voting_result_form</field>
+            <field name="model">vit.voting_result</field>
             <field name="type">form</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <form string="Candidate">
+                <form string="Voting result">
                     <header>
+                        <button string="Confirm" type="object" name="action_confirm" states="draft" />
+                        <button string="Mark as Done" type="object" name="action_done" states="open" />
+                        <button string="Reset to Draft" type="object" name="action_draft" states="open,done" />
+                        <field name="state" widget="statusbar" />
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -34,60 +38,52 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Candidate Name"/>
+                            <label for="name" class="oe_edit_only" string="Voting result Name"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
                             <group>
-                                <field name="is_candidate" />
-                                <field name="vote_count" />
-                                <field name="candidate_id" />
                             </group>
                             <group>
+                                <field name="candidate_id" />
                                 <field name="voting_session_id" />
                             </group>
                         </group>
                         <notebook>
-                            <page name="candidate_vote_record_ids" string="Candidate vote record">
-                                <field name="candidate_vote_record_ids"/>
-                            </page>
-                            <page name="voting_result_ids" string="Voting result">
-                                <field name="voting_result_ids"/>
-                            </page>
                         </notebook>
                     </sheet>
                 </form>
             </field>
         </record>
         <!-- search -->
-        <record id="view_res_partner_search" model="ir.ui.view">
-            <field name="name">res_partner</field>
-            <field name="model">res.partner</field>
+        <record id="view_vit_voting_result_search" model="ir.ui.view">
+            <field name="name">vit_voting_result</field>
+            <field name="model">vit.voting_result</field>
             <field name="arch" type="xml">
-                <search string="Candidate">
+                <search string="Voting result">
 
-                    <filter string="Is candidate" name="filter_by_is_candidate" domain="[('is_candidate','=','')]" />
-                    <filter string="Vote count" name="filter_by_vote_count" domain="[('vote_count','=','')]" />
-                    <filter string="Candidate" name="filter_by_candidate_id" domain="[('candidate_id','=','')]" />
-                    <field name="is_candidate" select="True"/>
-                    <field name="vote_count" select="True"/>
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="State" name="filter_by_state" domain="[('state','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="state" select="True"/>
                     <field name="candidate_id" select="True"/>
                     <field name="voting_session_id" select="True"/>
                     <group string="Group By..">
+                        <filter string="Candidate" domain="[]" name="group_by_candidate_id" context="{'group_by':'candidate_id'}"/>
                         <filter string="Voting session" domain="[]" name="group_by_voting_session_id" context="{'group_by':'voting_session_id'}"/>
                     </group>
                 </search>
             </field>
         </record>
         <!-- kanban , to show image, please add image_small in the model -->
-        <record id="view_res_partner_kanban" model="ir.ui.view" >
-            <field name="name">res_partner</field>
-            <field name="model">res.partner</field>
+        <record id="view_vit_voting_result_kanban" model="ir.ui.view" >
+            <field name="name">vit_voting_result</field>
+            <field name="model">vit.voting_result</field>
             <field name="arch" type="xml">
                 <kanban version="7.0">
                     <field name="id" />
-                    <field name="is_candidate" />
-                    <field name="vote_count" />
+                    <field name="name" />
+                    <field name="state" />
                     <field name="candidate_id" />
                     <field name="voting_session_id" />
                     <templates>
@@ -98,6 +94,11 @@
                                         <a type="open"><field name="name"/></a>
                                     </h4>
                                     <ul>
+
+                                        <li>
+                                            <span class="text-muted">Candidate</span> <field name="candidate_id"></field>
+                                        </li>
+
 
                                         <li>
                                             <span class="text-muted">Voting session</span> <field name="voting_session_id"></field>
@@ -113,31 +114,31 @@
         </record>
         <!-- calendar if a date field exists -->
         <!-- graph -->
-        <record id="view_res_partner_graph" model="ir.ui.view">
-            <field name="name">res_partner</field>
-            <field name="model">res.partner</field>
+        <record id="view_vit_voting_result_graph" model="ir.ui.view">
+            <field name="name">vit_voting_result</field>
+            <field name="model">vit.voting_result</field>
             <field name="arch" type="xml">
-                <graph string="Candidate" type="bar">
-                    <field name="voting_session_id"/>
+                <graph string="Voting result" type="bar">
+                    <field name="candidate_id"/>
                 </graph>
             </field>
         </record>
         <!-- action window -->
-        <record id="action_res_partner" model="ir.actions.act_window">
-            <field name="name">Candidate</field>
+        <record id="action_vit_voting_result" model="ir.actions.act_window">
+            <field name="name">Voting result</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.partner</field>
+            <field name="res_model">vit.voting_result</field>
             <field name="view_mode">kanban,tree,form,graph</field>
             <field name="context">{"search_default_fieldname":1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                Click to add a new Candidate
+                Click to add a new Voting result
                 </p><p>
-                Click the Create button to add a new Candidate
+                Click the Create button to add a new Voting result
                 </p>
             </field>
         </record>
 
-        <menuitem id="menu_res_partner" name="Candidate" parent="vit_election_app_config_menu" action="action_res_partner" sequence="30"/>
+        <menuitem id="menu_vit_voting_result" name="Voting result" parent="vit_election_app_sub_menu" action="action_vit_voting_result" sequence="60"/>
     </data>
 </odoo>

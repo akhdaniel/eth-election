@@ -53,6 +53,9 @@
                             <page name="vote_record_ids" string="Vote record">
                                 <field name="vote_record_ids"/>
                             </page>
+                            <page name="voting_result_id" string="Voting result">
+                                <field name="voting_result_id"/>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
