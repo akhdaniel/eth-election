@@ -32,7 +32,7 @@ Information
 		"view/candidate.xml",
 		"view/voter.xml",
 		"view/vote_record.xml",
-		"view/votin_result.xml",
+		"view/voting_result.xml",
 	],
 	"installable": True,
 	"auto_install": False,
