@@ -26,7 +26,7 @@
                     <page name="evoting_candidate" string="Candidate" attrs="{ 'invisible':[('is_candidate','=',False)] }">
                         <group>
                             <field name="is_candidate" />
-                            <field name="address" />
+                            <field name="cadidate_id" />
                             <field name="vote_count" />
                             <field name="voting_session_id" />
                             <field name="rx_receipt" />
