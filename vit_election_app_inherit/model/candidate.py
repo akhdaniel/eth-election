@@ -20,4 +20,5 @@ class candidate(models.Model):
         if res['status'] == -1:
             raise UserError(res['message'])
         self.rx_receipt = res['rx_receipt']
-        self.address = res['address']
+        # self.address = res['address']
+        self.candidate_id = res['candidate_id']
