@@ -12,6 +12,7 @@ class candidate(models.Model):
 
     is_candidate = fields.Boolean( string="Is candidate",  help="")
     vote_count = fields.Integer( string="Vote count",  help="")
+    candidate_id = fields.Integer( string="Candidate",  help="")
 
 
     voting_session_id = fields.Many2one(comodel_name="vit.voting_session",  string="Voting session",  help="")

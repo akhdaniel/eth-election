@@ -467,13 +467,30 @@
 											"height": 13,
 											"text": "+vote_count: Integer",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF72QTNYRl6/oo=",
+											"_parent": {
+												"$ref": "AAAAAAF7yXcuWQ1wjyo="
+											},
+											"model": {
+												"$ref": "AAAAAAF72QTNAxl3Lrc="
+											},
+											"font": "Arial;13;0",
+											"left": 293,
+											"top": 466,
+											"width": 135.5224609375,
+											"height": 13,
+											"text": "+candidate_id: Integer",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 288,
 									"top": 401,
 									"width": 145.5224609375,
-									"height": 68
+									"height": 83
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -486,7 +503,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 288,
-									"top": 469,
+									"top": 484,
 									"width": 145.5224609375,
 									"height": 10
 								},
@@ -2243,6 +2260,15 @@
 								"$ref": "AAAAAAF7yXcuWA1oH8A="
 							},
 							"name": "vote_count",
+							"type": "Integer"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF72QTNAxl3Lrc=",
+							"_parent": {
+								"$ref": "AAAAAAF7yXcuWA1oH8A="
+							},
+							"name": "candidate_id",
 							"type": "Integer"
 						}
 					]

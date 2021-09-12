@@ -11,6 +11,7 @@
                 <tree string="Candidate">
                     <field name="is_candidate" />
                     <field name="vote_count" />
+                    <field name="candidate_id" />
                     <field name="voting_session_id" />
                 </tree>
             </field>
@@ -40,6 +41,7 @@
                             <group>
                                 <field name="is_candidate" />
                                 <field name="vote_count" />
+                                <field name="candidate_id" />
                             </group>
                             <group>
                                 <field name="voting_session_id" />
@@ -63,8 +65,10 @@
 
                     <filter string="Is candidate" name="filter_by_is_candidate" domain="[('is_candidate','=','')]" />
                     <filter string="Vote count" name="filter_by_vote_count" domain="[('vote_count','=','')]" />
+                    <filter string="Candidate" name="filter_by_candidate_id" domain="[('candidate_id','=','')]" />
                     <field name="is_candidate" select="True"/>
                     <field name="vote_count" select="True"/>
+                    <field name="candidate_id" select="True"/>
                     <field name="voting_session_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Voting session" domain="[]" name="group_by_voting_session_id" context="{'group_by':'voting_session_id'}"/>
@@ -81,6 +85,7 @@
                     <field name="id" />
                     <field name="is_candidate" />
                     <field name="vote_count" />
+                    <field name="candidate_id" />
                     <field name="voting_session_id" />
                     <templates>
                         <t t-name="kanban-box">

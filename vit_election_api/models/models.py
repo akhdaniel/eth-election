@@ -38,10 +38,10 @@ class res_company(models.Model):
     def bsc_add_candidate(self, candidate_name, voting_session_id):
         try:
             web3,contract,system_account,system_private_key,chain_id = self.bsc_connect()
-            account = self.bsc_create_account(candidate_name)
-            candidate_address = account.address
+            # account = self.bsc_create_account(candidate_name)
+            # candidate_address = account.address
 
-            transaction = contract.functions.addCandidate(candidate_name, candidate_address, voting_session_id).buildTransaction({
+            transaction = contract.functions.addCandidate(candidate_name, voting_session_id).buildTransaction({
                     'chainId': chain_id,
                     'gas': 1000000,
                     'gasPrice': web3.eth.gasPrice,
@@ -52,10 +52,15 @@ class res_company(models.Model):
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
 
+
+            #get last candidate Id
+            candidateId = contract.functions.candidatesCount().call()
+
             return {
                 'status': 0,
-                'address': str(account.address),
-                'private_key': str(account.privateKey),                
+                # 'address': str(account.address),
+                # 'private_key': str(account.privateKey),     
+                'candidateId': candidateId,           
                 'rx_receipt': str(tx_receipt)
             }
             
@@ -94,13 +99,13 @@ class res_company(models.Model):
                 'message': str(e)
             }
 
-    def bsc_vote(self, candidate_address, voter_address, voting_session_id):
+    def bsc_vote(self, candidate_id, voter_address, voting_session_id):
         try:
             web3,contract,system_account,system_private_key,chain_id = self.bsc_connect()
 
-            contract.functions.vote(candidate_address, voter_address, voting_session_id).estimateGas()
+            contract.functions.vote(candidate_id, voter_address, voting_session_id).estimateGas()
 
-            transaction = contract.functions.vote(candidate_address, voter_address, voting_session_id).buildTransaction({
+            transaction = contract.functions.vote(candidate_id, voter_address, voting_session_id).buildTransaction({
                     'chainId': chain_id,
                     'gas': 1000000,
                     'gasPrice': web3.eth.gasPrice,
