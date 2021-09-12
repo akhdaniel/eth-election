@@ -60,7 +60,7 @@ class res_company(models.Model):
                 'status': 0,
                 # 'address': str(account.address),
                 # 'private_key': str(account.privateKey),     
-                'candidateId': candidateId,           
+                'candidate_id': candidateId,           
                 'rx_receipt': str(tx_receipt)
             }
             
