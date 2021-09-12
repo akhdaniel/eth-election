@@ -34,9 +34,9 @@
             <field name="inherit_id" ref="vit_election_app.view_vit_vote_record_search"/>
             <field name="arch" type="xml">
                 <search string="Vote record">
-                    <filter string="Name" name="filter_by_name" position="replace"/>
-                    <filter string="State" name="filter_by_state" position="replace" />
-                    <filter string="Rx receipt" name="filter_by_rx_receipt" position="replace" />
+                    <filter name="filter_by_name" position="replace"/>
+                    <filter name="filter_by_state" position="replace" />
+                    <filter name="filter_by_rx_receipt" position="replace" />
 
                     <filter string="Validated" name="filter_validated" domain="[('state','=','done')]" />
                     <filter string="Pending" name="filter_pending" domain="[('state','=','open')]" />
