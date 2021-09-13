@@ -1,4 +1,5 @@
 pragma solidity 0.4.22;
+pragma experimental ABIEncoderV2;
 
 contract Election2 {
     // Model a Candidate
@@ -13,10 +14,15 @@ contract Election2 {
     struct VoteRecord {
         address addr;
         uint votingSessionId;
-        address candidateAddress;
+        // address candidateAddress;
+        uint candidateId;
     }
     VoteRecord[] public voteRecords;
-    uint public voteRecordCount = voteRecords.length;
+    
+    function  getVoteRecordCount() public constant returns (uint) {
+        return voteRecords.length;
+    }
+    // uint public voteRecordCount = voteRecords.length;
     
     //model Voter
     struct Voter {
@@ -26,7 +32,7 @@ contract Election2 {
     mapping(address => Voter) public voters;
     
 
-    mapping(address => Candidate) public candidates;
+    mapping(uint => Candidate) public candidates;
     uint public candidatesCount;
 
     // voted event
@@ -41,9 +47,9 @@ contract Election2 {
         // addVoter("Voter 2", 0x53144990db4f070c47924E447c4cb9ad52346f2c);
     }
 
-    function addCandidate (string _name, address _addr, uint _votingSessionId) public {
+    function addCandidate (string _name, uint _votingSessionId) public {
         candidatesCount ++;
-        candidates[_addr] = Candidate(candidatesCount, _name, _votingSessionId, 0);
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, _votingSessionId, 0);
     }
     
     function addVoter (string _name, address _addr) public {
@@ -62,16 +68,19 @@ contract Election2 {
         return false;
     }
 
-    function vote (address _candidateAddress, address _addr, uint _votingSessionId) public {
+    // function vote (address _candidateAddress, address _addr, uint _votingSessionId) public {
+    function vote (uint _candidateId, address _addr, uint _votingSessionId) public {
 
         //require valid voter address
+        // require(voters[_addr] != null, 
+        // "voter invalid");
 
         //require that candidate is on the correct voting session
-        require(candidates[_candidateAddress].votingSessionId == _votingSessionId,
+        require(candidates[_candidateId].votingSessionId == _votingSessionId,
             "candidateId not in votingSessionId.");
 
         // require a valid candidate
-        require(candidates[_candidateAddress].id != 0,
+        require(candidates[_candidateId].id != 0,
             "candidate not found.");
 
         // require that they haven't voted before
@@ -79,15 +88,22 @@ contract Election2 {
             "voter alreadyVote in _votingSessionId" );
             
         // record that voter has voted on a _votingSessionId
-        voteRecords.push(VoteRecord(_addr, _votingSessionId, _candidateAddress));
+        voteRecords.push(VoteRecord(_addr, _votingSessionId, _candidateId));
 
         // update candidate vote Count
-        candidates[_candidateAddress].voteCount ++;
+        candidates[_candidateId].voteCount ++;
 
         // trigger voted event
         // votedEvent(_candidateId);
     }
     
+    function getAllCandidates() public view returns (Candidate[] memory){
+        Candidate[] memory res = new Candidate[](candidatesCount);
+        for (uint i = 1; i <= candidatesCount; i++) {
+            Candidate memory candidate = candidates[i];
+            res[i-1] = candidate;
+        }
+        return res;
+    }
     
-
 }

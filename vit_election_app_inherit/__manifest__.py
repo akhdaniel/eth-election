@@ -29,6 +29,7 @@ Information
 """,
 	"data": [
 		"data/sequence_vote_record.xml",
+		"data/cron.xml",
 		"view/candidate.xml",
 		"view/voter.xml",
 		"view/vote_record.xml",
