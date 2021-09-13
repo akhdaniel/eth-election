@@ -2254,23 +2254,6 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF72U1KIB9MXSc=",
-											"_parent": {
-												"$ref": "AAAAAAF72UW0MRn+4/0="
-											},
-											"model": {
-												"$ref": "AAAAAAF72U1J5R89T9E="
-											},
-											"font": "Arial;13;0",
-											"left": 13,
-											"top": 268,
-											"width": 360.013671875,
-											"height": 13,
-											"text": "+rx_receipt: Text",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAF73Ozdjh/10rY=",
 											"_parent": {
 												"$ref": "AAAAAAF72UW0MRn+4/0="
@@ -2280,7 +2263,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 13,
-											"top": 283,
+											"top": 268,
 											"width": 360.013671875,
 											"height": 13,
 											"text": "+voteCount: Integer",
@@ -2291,7 +2274,7 @@
 									"left": 8,
 									"top": 233,
 									"width": 370.013671875,
-									"height": 68
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -2304,7 +2287,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 8,
-									"top": 301,
+									"top": 286,
 									"width": 370.013671875,
 									"height": 10
 								},
@@ -3339,15 +3322,6 @@
 							"name": "state",
 							"type": "Selection",
 							"defaultValue": "('draft','Draft'),('open','Open'),('done','Done')"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAF72U1J5R89T9E=",
-							"_parent": {
-								"$ref": "AAAAAAF72UW0Ixn2Ysw="
-							},
-							"name": "rx_receipt",
-							"type": "Text"
 						},
 						{
 							"_type": "UMLAttribute",

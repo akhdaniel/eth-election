@@ -84,7 +84,6 @@
                         <tr>
                             <td>Name</td>
                             <td>State</td>
-                            <td>Rx receipt</td>
                             <td>Vote count</td>
                             <td>Candidate</td>
                             <td>Voting session</td>
@@ -94,7 +93,6 @@
                         <tr t-foreach="doc.voting_result_id" t-as="line">
                             <td><span t-field="line.name" /></td>
                             <td><span t-field="line.state" /></td>
-                            <td><span t-field="line.rx_receipt" /></td>
                             <td><span t-field="line.voteCount" /></td>
                             <td><span t-field="line.candidate_id" /></td>
                             <td><span t-field="line.voting_session_id" /></td>

@@ -11,7 +11,6 @@
                 <tree string="Voting result">
                     <field name="name" />
                     <field name="state" />
-                    <field name="rx_receipt" />
                     <field name="voteCount" />
                     <field name="candidate_id" />
                     <field name="voting_session_id" />
@@ -45,7 +44,6 @@
                         </div>
                         <group>
                             <group>
-                                <field name="rx_receipt" />
                                 <field name="voteCount" />
                             </group>
                             <group>
@@ -68,11 +66,9 @@
 
                     <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
                     <filter string="State" name="filter_by_state" domain="[('state','=','')]" />
-                    <filter string="Rx receipt" name="filter_by_rx_receipt" domain="[('rx_receipt','=','')]" />
                     <filter string="Vote count" name="filter_by_voteCount" domain="[('voteCount','=','')]" />
                     <field name="name" select="True"/>
                     <field name="state" select="True"/>
-                    <field name="rx_receipt" select="True"/>
                     <field name="voteCount" select="True"/>
                     <field name="candidate_id" select="True"/>
                     <field name="voting_session_id" select="True"/>
@@ -92,7 +88,6 @@
                     <field name="id" />
                     <field name="name" />
                     <field name="state" />
-                    <field name="rx_receipt" />
                     <field name="voteCount" />
                     <field name="candidate_id" />
                     <field name="voting_session_id" />

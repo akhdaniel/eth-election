@@ -11,7 +11,6 @@ class voting_result(models.Model):
     _description = "vit.voting_result"
     name = fields.Char( required=True, default="New", readonly=True,  string="Name",  help="")
     state = fields.Selection(selection=STATES,  readonly=True, default=STATES[0][0],  string="State",  help="")
-    rx_receipt = fields.Text( string="Rx receipt",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
     voteCount = fields.Integer( string="Vote count",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
 
 
