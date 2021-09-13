@@ -19,6 +19,8 @@ class voting_result(models.Model):
         if res['status'] == -1:
             raise UserError(res['message'])
 
+        self.env.cr.execute('delete from vit_voting_result')
+        
         """
         struct Candidate {
             uint id;
