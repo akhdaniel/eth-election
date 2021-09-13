@@ -12,6 +12,7 @@ class voting_result(models.Model):
     name = fields.Char( required=True, default="New", readonly=True,  string="Name",  help="")
     state = fields.Selection(selection=STATES,  readonly=True, default=STATES[0][0],  string="State",  help="")
     rx_receipt = fields.Text( string="Rx receipt",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
+    voteCount = fields.Integer( string="Vote count",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
 
 
     candidate_id = fields.Many2one(comodel_name="res.partner",  string="Candidate",  readonly=True, states={"draft" : [("readonly",False)]},  help="")
