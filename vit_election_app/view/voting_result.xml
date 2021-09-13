@@ -11,7 +11,7 @@
                 <tree string="Voting result">
                     <field name="name" />
                     <field name="state" />
-                    <field name="voteCount" />
+                    <field name="vote_count" />
                     <field name="candidate_id" />
                     <field name="voting_session_id" />
                 </tree>
@@ -44,7 +44,7 @@
                         </div>
                         <group>
                             <group>
-                                <field name="voteCount" />
+                                <field name="vote_count" />
                             </group>
                             <group>
                                 <field name="candidate_id" />
@@ -66,10 +66,10 @@
 
                     <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
                     <filter string="State" name="filter_by_state" domain="[('state','=','')]" />
-                    <filter string="Vote count" name="filter_by_voteCount" domain="[('voteCount','=','')]" />
+                    <filter string="Vote count" name="filter_by_vote_count" domain="[('vote_count','=','')]" />
                     <field name="name" select="True"/>
                     <field name="state" select="True"/>
-                    <field name="voteCount" select="True"/>
+                    <field name="vote_count" select="True"/>
                     <field name="candidate_id" select="True"/>
                     <field name="voting_session_id" select="True"/>
                     <group string="Group By..">
@@ -88,7 +88,7 @@
                     <field name="id" />
                     <field name="name" />
                     <field name="state" />
-                    <field name="voteCount" />
+                    <field name="vote_count" />
                     <field name="candidate_id" />
                     <field name="voting_session_id" />
                     <templates>

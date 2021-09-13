@@ -2266,7 +2266,7 @@
 											"top": 268,
 											"width": 360.013671875,
 											"height": 13,
-											"text": "+voteCount: Integer",
+											"text": "+vote_count: Integer",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3329,7 +3329,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF72UW0Ixn2Ysw="
 							},
-							"name": "voteCount",
+							"name": "vote_count",
 							"type": "Integer"
 						}
 					]
