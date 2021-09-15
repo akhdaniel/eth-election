@@ -28,6 +28,7 @@
         'views/views.xml',
         'views/templates.xml',
         'data/params.xml',
+        'views/res_config_settings_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
