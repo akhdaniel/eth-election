@@ -51,6 +51,69 @@
                             </div>
                         </div>
                     </div>
+                                        
+                    <div class="row mt16 o_settings_container" name="vit_election_bsc_url">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                            id="vit_election_bsc_url"
+                            title="Ethereum address">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Ethereum Address</span>
+                                <!-- <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." role="img"/> -->
+                                <div class="text-muted">
+                                    Ethereum RPC server address.
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Ethereum Address" for="vit_election_bsc_url" class="col-lg-3 o_light_label"/>
+                                        <field name="vit_election_bsc_url" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                                            
+                    <div class="row mt16 o_settings_container" name="vit_election_chain_id">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                            id="vit_election_chain_id"
+                            title="Ethereum Chain ID">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Ethereum Chain ID</span>
+                                <!-- <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." role="img"/> -->
+                                <div class="text-muted">
+                                    Ethereum Chain ID
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Ethereum Chain ID" for="vit_election_chain_id" class="col-lg-3 o_light_label"/>
+                                        <field name="vit_election_chain_id" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                                                                
+                    <div class="row mt16 o_settings_container" name="vit_election_abi">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                            id="vit_election_abi"
+                            title="Smart Contract ABI">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Smart Contract ABI</span>
+                                <!-- <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." role="img"/> -->
+                                <div class="text-muted">
+                                    Smart Contract ABI
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Smart Contract ABI" for="vit_election_abi" class="col-lg-3 o_light_label"/>
+                                        <field name="vit_election_abi" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                 </div>
             </xpath>

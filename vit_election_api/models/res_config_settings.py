@@ -17,3 +17,20 @@ class ResConfigSettings(models.TransientModel):
         help="System address for paying gas fees."
     )
 
+
+    vit_election_chain_id = fields.Integer(
+        string="Chain ID",
+        help="System address for paying gas fees."
+    )
+
+    vit_election_bsc_url = fields.Char(
+        string="Ethereum RPC URL",
+        help="System address for paying gas fees."
+    )
+
+
+    vit_election_abi = fields.Text(
+        string="System Address",
+        help="System address for paying gas fees."
+    )
+
