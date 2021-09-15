@@ -15,23 +15,27 @@ class ResConfigSettings(models.TransientModel):
 
     vit_election_system_address = fields.Char(
         string="System Address",
+        config_parameter="vit_election.system_address",
         help="System address for paying gas fees."
     )
 
 
     vit_election_chain_id = fields.Integer(
         string="Chain ID",
-        help="System address for paying gas fees."
+        config_parameter="vit_election.chain_id",
+        help="Ethereum RPC Chain ID."
     )
 
     vit_election_bsc_url = fields.Char(
         string="Ethereum RPC URL",
-        help="System address for paying gas fees."
+        config_parameter="vit_election.bsc_url",
+        help="Ethereum RPC URL."
     )
 
 
     vit_election_abi = fields.Text(
         string="System Address",
-        help="System address for paying gas fees."
+        config_parameter="vit_election.abi",
+        help="Smart contract ABI."
     )
 
