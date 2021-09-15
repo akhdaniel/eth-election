@@ -5,6 +5,7 @@
 	"version": "1.0", 
 	"depends": [
 		'base',
+		'mail',
 		'vit_election_app',
 		'vit_election_api'
 	],
