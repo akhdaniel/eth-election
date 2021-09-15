@@ -9,6 +9,7 @@ class ResConfigSettings(models.TransientModel):
 
     vit_election_contract_address = fields.Char(
         string="Smart Contract Address",
+        config_parameter="vit_election.contract_address",
         help="Ethereum smart contract address for e-voting."
     )
 
