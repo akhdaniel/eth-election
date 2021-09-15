@@ -12,3 +12,8 @@ class ResConfigSettings(models.TransientModel):
         help="Ethereum smart contract address for e-voting."
     )
 
+    vit_election_system_address = fields.Char(
+        string="System Address",
+        help="System address for paying gas fees."
+    )
+
