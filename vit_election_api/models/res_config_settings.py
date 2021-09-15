@@ -32,9 +32,8 @@ class ResConfigSettings(models.TransientModel):
         help="Ethereum RPC URL."
     )
 
-
-    vit_election_abi = fields.Text(
-        string="System Address",
+    vit_election_abi = fields.Char(
+        string="Smart contract ABI",
         config_parameter="vit_election.abi",
         help="Smart contract ABI."
     )
