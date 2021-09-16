@@ -13,7 +13,7 @@
                     <h2>Ethereum Smart Contract</h2>
 
                     <div class="row mt16 o_settings_container" name="vit_election_contract_address">
-                        <div class="col-12 col-lg-6 o_setting_box"
+                        <div class="col-12 o_setting_box"
                             id="vit_election_contract_address"
                             title="Ethereum based Smart contract address.">
                             <div class="o_setting_left_pane"/>
@@ -34,7 +34,7 @@
                     </div>
                     
                     <div class="row mt16 o_settings_container" name="vit_election_system_address">
-                        <div class="col-12 col-lg-6 o_setting_box"
+                        <div class="col-12 o_setting_box"
                             id="vit_election_system_address"
                             title="Ethereum based Smart contract address.">
                             <div class="o_setting_left_pane"/>
@@ -55,7 +55,7 @@
                     </div>
                                         
                     <div class="row mt16 o_settings_container" name="vit_election_bsc_url">
-                        <div class="col-12 col-lg-6 o_setting_box"
+                        <div class="col-12 o_setting_box"
                             id="vit_election_bsc_url"
                             title="Ethereum Server Address">
                             <div class="o_setting_left_pane"/>
@@ -76,7 +76,7 @@
                     </div>
                                                             
                     <div class="row mt16 o_settings_container" name="vit_election_chain_id">
-                        <div class="col-12 col-lg-6 o_setting_box"
+                        <div class="col-12 o_setting_box"
                             id="vit_election_chain_id"
                             title="Ethereum Chain ID">
                             <div class="o_setting_left_pane"/>
@@ -97,7 +97,7 @@
                     </div>
                                                                                 
                     <div class="row mt16 o_settings_container" name="vit_election_abi">
-                        <div class="col-12 col-lg-6 o_setting_box"
+                        <div class="col-12 o_setting_box"
                             id="vit_election_abi"
                             title="Smart Contract ABI">
                             <div class="o_setting_left_pane"/>
